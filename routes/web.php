@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,12 @@ Route::get('/', function () {
 
 Route::get('/brand', function () {
     return view('brand');
+});
+Auth::routes();
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/admin', function ()    {
+        return 1;
+    });
 });
