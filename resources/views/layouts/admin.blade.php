@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Sleek - Admin Dashboard Template</title>
+  <title>Dashboard</title>
 
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
@@ -425,7 +425,7 @@ NProgress.start();
                       <div class="sub-menu">
                         
                         <li >
-                          <a href="{{route('movies.index')}}">Movies</a>
+                          <a href="">Movies</a>
                         </li>
                       
                         
@@ -704,7 +704,7 @@ NProgress.start();
   <!-- User Account -->
   <li class="dropdown user-menu">
     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-      <img src="assets/img/user/user.png" class="user-image" alt="User Image" />
+      <img src="{{asset('public/img/user/user.png')}}" class="user-image" alt="User Image" />
       <span class="d-none d-lg-inline-block">Abdus Salam</span>
     </button>
     <ul class="dropdown-menu dropdown-menu-right">

@@ -27,6 +27,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', function ()    {
-        return 1;
+        return view('admin.dasboard.index');
     });
 });
