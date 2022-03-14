@@ -23,7 +23,6 @@
   <link href="{{asset('public/plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
 
   <!-- SLEEK CSS -->
-  <link id="sleek-css" rel="stylesheet" href="{{asset('public/css/sleek.css')}}" />
   <link id="sleek-css" rel="stylesheet" href="{{asset('public/css/app.css')}}" /> 
 
   

@@ -1,8 +1,49 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import '~bootstrap/scss/bootstrap';
+
+
+//admin
+@import './admin/variables';
+@import './admin/reboot';
+@import './admin/utilities/spacing';
+@import './admin/utilities/background';
+@import './admin/utilities/sizing';
+@import './admin/utilities/text';
+@import './admin/utilities/position';
+@import './admin/utilities/overflow';
+@import './admin/alert';
+@import './admin/badge';
+@import './admin/bredcrumb';
+@import './admin/buttons';
+@import './admin/card';
+@import './admin/caret';
+@import './admin/carousel';
+@import './admin/chart';
+@import './admin/code';
+@import './admin/date-range-picker';
+@import './admin/forms';
+@import './admin/footer';
+@import './admin/grid';
+@import './admin/icons';
+@import './admin/list-group';
+@import './admin/map';
+@import './admin/navbar';
+@import './admin/pagination';
+@import './admin/popover-tooltip';
+@import './admin/profile';
+@import './admin/sidebar';
+@import './admin/spinkit';
+@import './admin/separator';
+@import './admin/switchers';
+@import './admin/tabs';
+@import './admin/toaster';
+@import './admin/todo';
+@import './admin/type';
+@import './admin/tables';
+@import './admin/widgets';
+@import './admin/error';
+@import './admin/lada-button';
+@import './admin/rtl';
+
