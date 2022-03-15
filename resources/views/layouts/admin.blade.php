@@ -388,7 +388,7 @@ NProgress.start();
                   
                     
                       <li >
-                        <a class="sidenav-item-link" href="user-profile.html">
+                        <a class="sidenav-item-link" href="{{route('admin.user.index')}}">
                           <span class="nav-text">User Profile</span>
                           
                         </a>
@@ -425,7 +425,7 @@ NProgress.start();
                       <div class="sub-menu">
                         
                         <li >
-                          <a href="">Movies</a>
+                          <a href="{{route('category.index')}}">Category</a>
                         </li>
                       
                         

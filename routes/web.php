@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,8 +36,16 @@ Route::group(['middleware' => 'auth'], function () {
     
     //Users
     Route::group(['prefix' => 'admin'], function () {
+
+        //user
+
         Route::get('/user',function(){
             return view('admin.users.index');
-        });
+        })->name('admin.user.index');
+
+        //controller
+
+        Route::resource('category', 'CategoryController');
+
     });
 });
