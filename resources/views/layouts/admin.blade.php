@@ -28,7 +28,7 @@
   
 
   <!-- FAVICON -->
-  <link href="assets/img/favicon.png" rel="shortcut icon" />
+  <link href="{{asset('public/img/favicon.png')}}" rel="shortcut icon" />
 
   <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -710,7 +710,7 @@ NProgress.start();
     <ul class="dropdown-menu dropdown-menu-right">
       <!-- User image -->
       <li class="dropdown-header">
-        <img src="assets/img/user/user.png" class="img-circle" alt="User Image" />
+        <img src="{{asset('public/img/user/user.png')}}" class="img-circle" alt="User Image" />
         <div class="d-inline-block">
           Abdus Salam <small class="pt-1">abdus@gmail.com</small>
         </div>
@@ -791,15 +791,16 @@ NProgress.start();
 <script src="{{asset('public/plugins/select2/js/select2.min.js')}}"></script>
 <script src="{{asset('public/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js')}}"></script>
 <script src="{{asset('public/plugins/jvectormap/jquery-jvectormap-world-mill.js')}}"></script>
+<script src="{{asset('public/plugins/jekyll-search.min.js')}}"></script>
 <script src="{{asset('public/plugins/daterangepicker/moment.min.js')}}"></script>
 <script src="{{asset('public/plugins/daterangepicker/daterangepicker.js')}}"></script>
-<script src="{{asset('public/plugins/jekyll-search.min.js')}}"></script>
-<script src="{{asset('public/js/sleek.js')}}"></script>
 <script src="{{asset('public/js/chart.js')}}"></script>
 <script src="{{asset('public/js/date-range.js')}}"></script>
 <script src="{{asset('public/js/map.js')}}"></script>
 <script src="{{asset('public/js/custom.js')}}"></script>
+<script src="{{asset('public/js/app.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('public/js/sleek.js')}}"></script>
 
 
 @if(Session::get('status'))

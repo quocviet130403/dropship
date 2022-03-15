@@ -19,7 +19,7 @@ $(function() {
         start.format("ll") + " - " + end.format("ll")
       );
     };
-
+    jQuery.noConflict();
     $("#recent-orders .date-range-report").daterangepicker(
       {
         startDate: start,
