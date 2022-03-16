@@ -50,7 +50,7 @@
                             <input type="text" name="search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </form>
-                    </div>  
+                    </div>
                 </div>
                 <div class="bot-bar">
                     <div class="ave">
@@ -62,6 +62,23 @@
                 </div>
             </div>
         </header>
+        <div id="content">
+            <nav class="menu-content">
+                <ul class="list-menu">
+                    <li><a href="">Pupular</a></li>
+                    <li><a href="">News arrivals</a></li>
+                    <li><a href="">Best sellers</a></li>
+                    <li><a href="">Special offers</a></li>
+                    <li><a href="">Coming soon</a></li>
+                </ul>
+            </nav>
+            <div class="list-item">
+                <div class="item item-1">
+                    <span class="price">£89.99</span>
+                    <a href=""><img src="" alt=""></a>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
