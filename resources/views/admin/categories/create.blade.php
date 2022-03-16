@@ -22,11 +22,10 @@
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer02">Parent Category</label>
                                     <select name="parent_id" class="form-control" required>
-                                        @forelse ($categories as $category)
-                                            <option value="1">{{$category->category}}</option>
-                                        @empty
-                                            
-                                        @endforelse
+                                        <option value="0">-- Không --</option>
+                                        @php
+                                            echo show_categories($categories);
+                                        @endphp
                                     </select>
                                 </div>
                             </div>
