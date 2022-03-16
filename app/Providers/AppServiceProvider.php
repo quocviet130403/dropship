@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\BaseRepository;
 use App\Repository\BaseRepositoryInterface;
+use App\Repository\Categories\CategoryRepository;
+use App\Repository\Categories\CategoryRepositoryInterface;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->singleton(BaseRepositoryInterface::class,BaseRepository::class);
+        $this->app->singleton(CategoryRepositoryInterface::class,CategoryRepository::class);
     }
 
     /**

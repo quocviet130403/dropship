@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\Categories\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class CategoryController extends Controller
 {
@@ -22,9 +24,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(CategoryRepositoryInterface $categoryRepositoryInterface)
     {
         //
+        $categories = $categoryRepositoryInterface->getAll();
+        $data = [
+            'categories' => $categories
+        ];
+        return view('admin.categories.create',$data);
     }
 
     /**
@@ -33,9 +40,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, CategoryRepositoryInterface $categoryRepositoryInterface)
     {
         //
+        $data = $request->input();
+        $data = Arr::except($data, ['_token']);
+        $categoryRepositoryInterface->addOrUpdate($data);
+        return back()->with('status',true);
     }
 
     /**
