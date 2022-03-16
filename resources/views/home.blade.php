@@ -74,9 +74,24 @@
             </nav>
             <div class="list-item">
                 <div class="item item-1">
-                    <span class="price">£89.99</span>
-                    <a href=""><img src="" alt=""></a>
+                    <a href=""><img src="{{asset('public/images/home-img/item-1.png')}}" alt=""></a>
                 </div>
+                <div class="item item-2">
+                    <a href=""><img src="{{asset('public/images/home-img/item-2.png')}}" alt=""></a>
+                </div>
+                <div class="item item-3">
+                    <a href=""><img src="{{asset('public/images/home-img/item-3.png')}}" alt=""></a>
+                </div>
+                <div class="item item-4">
+                    <a href=""><img src="{{asset('public/images/home-img/item-4.png')}}" alt=""></a>
+                </div>
+                <div class="item item-5">
+                    <a href=""><img src="{{asset('public/images/home-img/item-5.png')}}" alt=""></a>
+                </div>
+                <div class="item item-6">
+                    <a href=""><img src="{{asset('public/images/home-img/item-6.png')}}" alt=""></a>
+                </div>
+                
             </div>
         </div>
     </div>
