@@ -10,5 +10,8 @@
 </head>
 <body>
     <div class="brand_begin"><img class="imgs" src="{{asset('public/images/brand_img/1.png')}}" alt=""></div>
+    <div class="brand_middle">
+        <div class="brand_middle_img"><img src="{{asset('public/images/brand_img/2.png')}}" alt="" class="imgs"></div>
+    </div>
 </body>
 </html>

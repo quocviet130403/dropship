@@ -15409,4 +15409,8 @@ html[dir=rtl] .sidebar li > a .caret:before {
   content: "\f141";
 }
 
+img {
+  margin-top: 50px;
+}
+
 /*# sourceMappingURL=app.css.map */
