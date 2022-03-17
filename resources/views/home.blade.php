@@ -91,7 +91,6 @@
                 <div class="item item-6">
                     <a href=""><img src="{{asset('public/images/home-img/item-6.png')}}" alt=""></a>
                 </div>
-                
             </div>
         </div>
     </div>
