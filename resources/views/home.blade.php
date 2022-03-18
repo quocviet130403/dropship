@@ -6,29 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
     <title>DropShip</title>
 </head>
 
 <body>
-    <div id="wrapper">
+    <div id="wrapper" class="montserrat-medium">
         <header>
             <div id="wraper-header">
                 <div class="top-bar">
-                    <div class="currency">
-                        <p>Currency: </p>
-                        <p>GBP</p> <span><i class="fa-solid fa-angle-down"></i></span>
-                    </div>
-                    <div class="register">
-                        <p>Register</p>
-                        <p>Sign In</p>
-                    </div>
-                    <div class="cart">
-                        <div class="icon-cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="head-container d-flex">
+                        <div class="box-currency d-flex">
+                            <p>Currency :</p>
+                            <p class="currency">GBP</p> 
+                            <span><i class="fa-solid fa-angle-down"></i></span>
                         </div>
-                        <p>Empty</p>
-                        <div class="icon-down">
-                            <span><i class="fa-solid fa-angle-down"></i>
+                        <div class="about-user d-flex">
+                            <div class="register d-flex">
+                                <p>Register</p>
+                                <p>Sign In</p>
+                            </div>
+                            <div class="cart d-flex">
+                                <div class="icon-cart">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </div>
+                                <p>Empty</p>
+                                <div class="icon-down">
+                                    <span><i class="fa-solid fa-angle-down"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

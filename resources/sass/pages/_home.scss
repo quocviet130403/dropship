@@ -1,0 +1,53 @@
+#wrapper {
+    header {
+        #wraper-header {
+            .top-bar {
+                background-color: #222527;
+                color: #999999;
+                .head-container {
+                    height: 46px;
+                    font-size: 13px;
+                    justify-content: space-between;
+                    .box-currency {
+                        padding: 14px 0px;
+                        p {
+                            padding-right: 5px;
+                        }
+                        .currency {
+                            padding-right: 9px;
+                        }
+                        span i{
+                            cursor: pointer;
+                        }
+                    }
+                    .about-user {
+                        width: 364px;
+                        justify-content: space-between;
+                        .register {
+                            padding: 14px 0px;
+                            p{
+                                cursor: pointer;
+                                &:first-child{
+                                    margin-right: 36px;
+                                }
+                            }
+                        }
+                        .cart {
+                            color: #ffffff;
+                            background-color: #00c8c8;
+                            padding: 14px 0px;
+                            .icon-cart {
+                                padding: 0px 22px;
+                            }
+                            .icon-down {
+                                cursor: pointer;
+                                padding-right: 24px;
+                                padding-left: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

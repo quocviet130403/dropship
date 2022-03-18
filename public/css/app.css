@@ -15409,8 +15409,105 @@ html[dir=rtl] .sidebar li > a .caret:before {
   content: "\f141";
 }
 
+.head-container {
+  width: 1170px;
+  margin: 0px auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inlineBlock {
+  display: inline-block;
+}
+
+@font-face {
+  font-family: montserratBold;
+  src: url(../home/Montserrat/static/Montserrat-Bold.ttf);
+}
+@font-face {
+  font-family: montserratRegular;
+  src: url(../home/Montserrat/static/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: montserratMedium;
+  src: url(../home/Montserrat/static/Montserrat-Medium.ttf);
+}
+@font-face {
+  font-family: montserratLight;
+  src: url(../home/Montserrat/static/Montserrat-Light.ttf);
+}
+.montserrat-bold {
+  font-family: montserratBold;
+}
+
+.montserrat-regular {
+  font-family: montserratRegular;
+}
+
+.montserrat-medium {
+  font-family: montserratMedium;
+}
+
+.montserrat-light {
+  font-family: montserratLight;
+}
+
+#wrapper header #wraper-header .top-bar {
+  background-color: #222527;
+  color: #999999;
+}
+#wrapper header #wraper-header .top-bar .head-container {
+  height: 46px;
+  font-size: 13px;
+  justify-content: space-between;
+}
+#wrapper header #wraper-header .top-bar .head-container .box-currency {
+  padding: 14px 0px;
+}
+#wrapper header #wraper-header .top-bar .head-container .box-currency p {
+  padding-right: 5px;
+}
+#wrapper header #wraper-header .top-bar .head-container .box-currency .currency {
+  padding-right: 9px;
+}
+#wrapper header #wraper-header .top-bar .head-container .box-currency span i {
+  cursor: pointer;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user {
+  width: 364px;
+  justify-content: space-between;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user .register {
+  padding: 14px 0px;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user .register p {
+  cursor: pointer;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user .register p:first-child {
+  margin-right: 36px;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user .cart {
+  color: #ffffff;
+  background-color: #00c8c8;
+  padding: 14px 0px;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user .cart .icon-cart {
+  padding: 0px 22px;
+}
+#wrapper header #wraper-header .top-bar .head-container .about-user .cart .icon-down {
+  cursor: pointer;
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
 img {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 /*# sourceMappingURL=app.css.map */

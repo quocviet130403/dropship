@@ -52,7 +52,9 @@
 @import './admin/lada-button';
 @import './admin/rtl';
 
-
+//Home
+@import './pages/home/config';
+@import './pages/home/fonts';
 //Web
-
+@import './pages/home';
 @import './pages/brand';
