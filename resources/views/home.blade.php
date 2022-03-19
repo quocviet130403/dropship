@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('public/css/app.css') }}">
     <title>DropShip</title>
 </head>
 
 <body>
-    <div id="wrapper" class="montserrat-medium">
+    <div id="wrapper">
         <header>
             <div id="wraper-header">
                 <div class="top-bar">
                     <div class="head-container d-flex">
                         <div class="box-currency d-flex">
                             <p>Currency :</p>
-                            <p class="currency">GBP</p> 
+                            <p class="currency">GBP</p>
                             <span><i class="fa-solid fa-angle-down"></i></span>
                         </div>
                         <div class="about-user d-flex">
@@ -38,33 +41,37 @@
                         </div>
                     </div>
                 </div>
-                <div class="mid-bar">
-                    <div class="logo">
-                        <a href=""><img src="{{ asset('public/images/home-img/logo.png') }}" alt=""></a>
-                    </div>
-                    <nav>
-                        <ul class="main-menu">
-                            <li><a href="">Mens</a></li>
-                            <li><a href="">Womens</a></li>
-                            <li><a href="">The Brand</a></li>
-                            <li><a href="">Local stores</a></li>
-                            <li><a href="">look book</a></li>
-                        </ul>
-                    </nav>
-                    <div class="box-search">
-                        <form action="">
-                            <input type="text" name="search">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </form>
-                    </div>
-                </div>
                 <div class="bot-bar">
                     <div class="ave">
                         <img src="{{ asset('public/images/home-img/AVE.png') }}" alt="">
                     </div>
-                    <button>
-                        <p>shop men's collection</p>
-                    </button>
+                    <div class="logo-menu-search container-remake">
+                        <div class="box-wp d-flex">
+                            <div class="logo">
+                                <a href=""><img src="{{ asset('public/images/home-img/logo.png') }}" alt=""></a>
+                            </div>
+                            <div class="menu-search d-flex">
+                                <nav>
+                                    <ul class="main-menu d-flex">
+                                        <li><a href="">Mens</a></li>
+                                        <li><a href="">Womens</a></li>
+                                        <li><a href="">The Brand</a></li>
+                                        <li><a href="">Local stores</a></li>
+                                        <li><a href="">look book</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="box-search">
+                                    <form action="">
+                                        <input type="text" name="search" placeholder="Search..">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <button>
+                            <p>shop men's collection</p>
+                        </button>
+                    </div>
                 </div>
             </div>
         </header>

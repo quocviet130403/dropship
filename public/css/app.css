@@ -15414,6 +15414,11 @@ html[dir=rtl] .sidebar li > a .caret:before {
   margin: 0px auto;
 }
 
+.container-remake {
+  width: 1780px;
+  margin: 0px auto;
+}
+
 .d-flex {
   display: flex;
 }
@@ -15426,38 +15431,9 @@ html[dir=rtl] .sidebar li > a .caret:before {
   display: inline-block;
 }
 
-@font-face {
-  font-family: montserratBold;
-  src: url(../home/Montserrat/static/Montserrat-Bold.ttf);
+#wrapper {
+  font-family: "Roboto", sans-serif;
 }
-@font-face {
-  font-family: montserratRegular;
-  src: url(../home/Montserrat/static/Montserrat-Regular.ttf);
-}
-@font-face {
-  font-family: montserratMedium;
-  src: url(../home/Montserrat/static/Montserrat-Medium.ttf);
-}
-@font-face {
-  font-family: montserratLight;
-  src: url(../home/Montserrat/static/Montserrat-Light.ttf);
-}
-.montserrat-bold {
-  font-family: montserratBold;
-}
-
-.montserrat-regular {
-  font-family: montserratRegular;
-}
-
-.montserrat-medium {
-  font-family: montserratMedium;
-}
-
-.montserrat-light {
-  font-family: montserratLight;
-}
-
 #wrapper header #wraper-header .top-bar {
   background-color: #222527;
   color: #999999;
@@ -15504,6 +15480,65 @@ html[dir=rtl] .sidebar li > a .caret:before {
   cursor: pointer;
   padding-right: 24px;
   padding-left: 8px;
+}
+#wrapper header #wraper-header .bot-bar {
+  position: relative;
+}
+#wrapper header #wraper-header .bot-bar .ave img {
+  z-index: -99;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  margin: 0px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search {
+  min-height: 920px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp {
+  justify-content: space-between;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .logo img {
+  margin-top: 38px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .menu-search {
+  margin-top: 38px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .menu-search nav ul.main-menu {
+  min-height: 28px;
+  align-items: center;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .menu-search nav ul.main-menu li {
+  margin-right: 56px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .menu-search nav ul.main-menu li:last-child {
+  margin-right: 116px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .menu-search nav ul.main-menu li a {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #222222;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .menu-search nav ul.main-menu li:hover a {
+  color: #00c8c8;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .box-search form {
+  position: relative;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .box-search form input {
+  line-height: 0;
+  color: #222222;
+  border: 1px solid #e7e7e7;
+  width: 188px;
+  padding: 4px 2px;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .box-search form input::placeholder {
+  color: #9e9e9e;
+}
+#wrapper header #wraper-header .bot-bar .logo-menu-search .box-wp .box-search form i {
+  color: #9e9e9e;
+  position: absolute;
+  top: 7px;
+  right: 10px;
 }
 
 img {

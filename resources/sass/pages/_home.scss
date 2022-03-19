@@ -1,4 +1,5 @@
 #wrapper {
+    font-family: "Roboto", sans-serif;
     header {
         #wraper-header {
             .top-bar {
@@ -16,7 +17,7 @@
                         .currency {
                             padding-right: 9px;
                         }
-                        span i{
+                        span i {
                             cursor: pointer;
                         }
                     }
@@ -25,9 +26,9 @@
                         justify-content: space-between;
                         .register {
                             padding: 14px 0px;
-                            p{
+                            p {
                                 cursor: pointer;
-                                &:first-child{
+                                &:first-child {
                                     margin-right: 36px;
                                 }
                             }
@@ -43,6 +44,67 @@
                                 cursor: pointer;
                                 padding-right: 24px;
                                 padding-left: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+            .bot-bar {
+                position: relative;
+                .ave img {
+                    z-index: -99;
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    margin: 0px;
+                }
+                .logo-menu-search {
+                    min-height: 920px;
+                    .box-wp {
+                        justify-content: space-between;
+                        .logo img {
+                            margin-top: 38px;
+                        }
+                        .menu-search {
+                            margin-top: 38px;
+                            nav ul.main-menu {
+                                min-height: 28px;
+                                align-items: center;
+                                li {
+                                    margin-right: 56px;
+                                    &:last-child{
+                                        margin-right: 116px;
+                                    }
+                                    a{
+                                        text-transform: uppercase;
+                                        font-size: 14px;
+                                        color: #222222;
+                                    }
+                                    &:hover a{
+                                        color: #00c8c8;
+                                    }
+                                }
+                            }
+                        }
+                        .box-search{
+                            form{
+                                position: relative;
+                                input{
+                                    line-height: 0;
+                                    color: #222222;
+                                    border: 1px solid #e7e7e7;
+                                    width: 188px;
+                                    padding: 4px 2px;
+                                    &::placeholder {
+                                        color: #9e9e9e;
+                                      }
+                                }
+                                i{
+                                    color: #9e9e9e;
+                                    position: absolute;
+                                    top: 7px;
+                                    right: 10px;
+                                }
                             }
                         }
                     }
