@@ -53,11 +53,51 @@
                             <div class="menu-search d-flex">
                                 <nav>
                                     <ul class="main-menu d-flex">
-                                        <li><a href="">Mens</a></li>
-                                        <li><a href="">Womens</a></li>
+                                        <li>
+                                            <a href="">Mens</a>
+                                            <i class="fa-solid fa-angle-down"></i>
+                                            <div class="box-sub-menu">
+                                                <div class="wp-menu-content">
+                                                    <div class="menu-content d-flex">
+                                                        <ul class="sub-1">
+                                                            <p>Casuals</p>
+                                                            <li><a href="">Jackets</a></li>
+                                                            <li><a href="">Hoodies & Sweatshirts</a></li>
+                                                            <li><a href="">Polo Shirts</a></li>
+                                                            <li><a href="">Sportswear</a></li>
+                                                            <li><a href="">Trousers & Chinos</a></li>
+                                                            <li><a href="">T-Shirts</a></li>
+                                                        </ul>
+                                                        <ul class="sub-2">
+                                                            <p>Formal</p>
+                                                            <li><a href="">Jackets</a></li>
+                                                            <li><a href="">Shirts</a></li>
+                                                            <li><a href="">Suits</a></li>
+                                                            <li><a href="">Trousers</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="sale">
+                                                        <div class="sale-content">
+                                                            <p>Autumn sale!</p>
+                                                            <p>up to 50% off</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="">Womens</a>
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </li>
                                         <li><a href="">The Brand</a></li>
-                                        <li><a href="">Local stores</a></li>
-                                        <li><a href="">look book</a></li>
+                                        <li>
+                                            <a href="">Local stores</a>
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </li>
+                                        <li>
+                                            <a href="">look book</a>
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </li>
                                     </ul>
                                 </nav>
                                 <div class="box-search">
@@ -68,10 +108,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button>
-                            <p>shop men's collection</p>
-                        </button>
                     </div>
+                    <button>
+                        <p>shop men's collection</p>
+                    </button>
                 </div>
             </div>
         </header>

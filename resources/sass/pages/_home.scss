@@ -1,3 +1,4 @@
+// sass --watch resources/sass/app.scss public/css/app.css
 #wrapper {
     font-family: "Roboto", sans-serif;
     header {
@@ -59,7 +60,7 @@
                     margin: 0px;
                 }
                 .logo-menu-search {
-                    min-height: 920px;
+                    min-height: 850px;
                     .box-wp {
                         justify-content: space-between;
                         .logo img {
@@ -71,25 +72,97 @@
                                 min-height: 28px;
                                 align-items: center;
                                 li {
+                                    position: relative;
                                     margin-right: 56px;
-                                    &:last-child{
+                                    &:last-child {
                                         margin-right: 116px;
                                     }
-                                    a{
+                                    a {
                                         text-transform: uppercase;
                                         font-size: 14px;
                                         color: #222222;
                                     }
-                                    &:hover a{
+                                    i {
+                                        position: absolute;
+                                        bottom: -13px;
+                                        left: 1px;
+                                        font-size: 13px;
+                                        color: #9e9e9e;
+                                    }
+                                    &:hover > a {
                                         color: #00c8c8;
+                                        transition: all 0.2s ease-in-out;
+                                    }
+                                    &:hover > i {
+                                        color: #00c8c8;
+                                        transition: all 0.2s ease-in-out;
+                                    }
+                                    .box-sub-menu {
+                                        box-shadow:0px 13px 12px 3px #bdb8ba;
+                                        width: 440px;
+                                        height: auto;
+                                        position: absolute;
+                                        top: 48px;
+                                        left: 0px;
+                                        background-color: #f8f8f8;
+                                        .wp-menu-content {
+                                            padding: 26px;
+                                            .menu-content {
+                                                ul{
+                                                    p {
+                                                        font-size: 14px;
+                                                        color: #575153;
+                                                        text-transform: uppercase;
+                                                        margin-bottom: 18px;
+                                                    }
+                                                    li {
+                                                        margin-bottom: 9px;
+                                                        margin-right: 84px;
+                                                        a {
+                                                            line-height: 1px;
+                                                            font-size: 15px;
+                                                            color: #969696;
+                                                            text-transform: unset;
+                                                            font-weight: unset;
+                                                            &:hover{
+                                                                color: #00c8c8;
+                                                            }
+                                                        }
+                                                        &:last-child {
+                                                            margin-bottom: 52px;
+                                                        }
+                                                    }
+                                                }
+                                                .sub-2 li{
+                                                    margin-right: 0px;
+                                                }
+                                            }
+                                            .sale{
+                                                width: 100%;
+                                                min-height: 172px;
+                                                background-color: #333333;
+                                                @include textCenterbyFlex();
+                                                .sale-content{
+                                                    text-transform: uppercase;
+                                                    color: #f8f8f8;
+                                                    p{
+                                                        font-size: 34px;
+                                                        letter-spacing: 3px;
+                                                    }
+                                                    &:first-child{
+                                                        font-weight: 600;
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                        .box-search{
-                            form{
+                        .box-search {
+                            form {
                                 position: relative;
-                                input{
+                                input {
                                     line-height: 0;
                                     color: #222222;
                                     border: 1px solid #e7e7e7;
@@ -97,9 +170,9 @@
                                     padding: 4px 2px;
                                     &::placeholder {
                                         color: #9e9e9e;
-                                      }
+                                    }
                                 }
-                                i{
+                                i {
                                     color: #9e9e9e;
                                     position: absolute;
                                     top: 7px;
@@ -107,6 +180,24 @@
                                 }
                             }
                         }
+                    }
+                }
+                button {
+                    position: absolute;
+                    bottom: 122px;
+                    right: 322px;
+                    border: 2px solid #737373;
+                    width: 338px;
+                    min-height: 54px;
+                    p {
+                        text-transform: uppercase;
+                        font-size: 16px;
+                    }
+                    &:hover {
+                        background-color: #00c8c8;
+                        border: 2px solid #00c8c8;
+                        color: #f8f8f8;
+                        transition: all 0.2s ease-in-out;
                     }
                 }
             }
