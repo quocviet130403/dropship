@@ -13,10 +13,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CategoryRepositoryInterface $categoryRepositoryInterface)
     {
         //
-        return view('admin.categories.index');
+        $categories = $categoryRepositoryInterface->getAll();
+        $data = [
+            'categories' => $categories
+        ];
+        return view('admin.categories.index',$data);
     }
 
     /**
