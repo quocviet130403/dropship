@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\Categories\CategoryRepositoryInterface;
 use App\Repository\Products\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ProductController extends Controller
 {
@@ -44,9 +45,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ProductRepositoryInterface $productRepositoryInterface)
     {
         //
+        $data = $request->input();
+        $data = Arr::except($data, ['_token','filepath']);
+        $urlImage = convert_image($request->input('filepath'));
+        return $urlImage;
+        // $productRepositoryInterface->addOrUpdate($data);
+        // return back()->with('status',true);
     }
 
     /**

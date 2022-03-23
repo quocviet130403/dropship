@@ -28,6 +28,7 @@ Route::get('/brand', function () {
 
 Auth::routes();
 
+
 //Admin
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin', function ()    {
@@ -54,5 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Auth::routes();
+
+Route::group(['prefix' => 'laravel-filemanager'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -432,6 +432,10 @@ NProgress.start();
                           <a href="{{route('product.index')}}">Products</a>
                         </li>
                       
+
+                        <li >
+                          <a href="{{asset('/filemanager')}}">Media</a>
+                        </li>
                         
                       </div>
                     </ul>
@@ -657,13 +661,13 @@ NProgress.start();
 <div class="navbar-right ">
 <ul class="nav navbar-nav">
   <!-- Github Link Button -->
-  <li class="github-link mr-3">
+  {{-- <li class="github-link mr-3">
     <a class="btn btn-outline-secondary btn-sm" href="https://github.com/tafcoder/sleek-dashboard" target="_blank">
       <span class="d-none d-md-inline-block mr-2">Source Code</span>
       <i class="mdi mdi-github-circle"></i>
     </a>
 
-  </li>
+  </li> --}}
   <li class="dropdown notifications-menu">
     <button class="dropdown-toggle" data-toggle="dropdown">
       <i class="mdi mdi-bell-outline"></i>
@@ -805,6 +809,45 @@ NProgress.start();
 <script src="{{asset('public/js/app.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('public/js/sleek.js')}}"></script>
+<script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+<script src="https://cdn.tiny.cloud/1/ra07npuj7d7sgobqeryn7lhveuqea3xducm3snej7xlzsmpp/tinymce/4/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    $('#lfm').filemanager('filepath');
+    var editor_config = {
+      path_absolute : "http://dropship.local/",
+      selector: "textarea",
+      plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars code fullscreen",
+      "insertdatetime media nonbreaking save table contextmenu directionality",
+      "emoticons template paste textcolor colorpicker textpattern"
+      ],
+      toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
+      relative_urls: false,
+      file_browser_callback : function(field_name, url, type, win) {
+      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+      var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
+
+      var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+      if (type == 'image') {
+          cmsURL = cmsURL + "&type=Images";
+      } else {
+          cmsURL = cmsURL + "&type=Files";
+      }
+
+      tinyMCE.activeEditor.windowManager.open({
+          file : cmsURL,
+          title : 'Filemanager',
+          width : x * 0.8,
+          height : y * 0.8,
+          resizable : "yes",
+          close_previous : "no"
+      });
+      }
+  };
+
+  tinymce.init(editor_config);
+</script>
 
 
 @if(Session::get('status'))
@@ -813,7 +856,7 @@ NProgress.start();
       Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Add Category Success !!!',
+          title: 'Add Success !!!',
           showConfirmButton: false,
           timer: 1500
       })
@@ -827,7 +870,7 @@ NProgress.start();
       Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Update Category Success !!!',
+          title: 'Update Success !!!',
           showConfirmButton: false,
           timer: 1500
       })
@@ -841,7 +884,7 @@ NProgress.start();
       Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Delete Category Success !!!',
+          title: 'Delete Success !!!',
           showConfirmButton: false,
           timer: 1500
       })

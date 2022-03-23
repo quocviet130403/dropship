@@ -19,11 +19,32 @@ if (!function_exists('show_categories')) {
     }
 }
 
-
 if (!function_exists('get_categories')) {
     function get_categories()
     {
         $categories = app(Category::class)->select('*')->get();
         return $categories;
+    }
+}
+
+if (!function_exists('convert_image')) {
+    function convert_image($urlImage)
+    {
+        if(strpos($urlImage,',') != false){
+            $arrImage = explode(',',$urlImage);
+            $result = [];
+            foreach($arrImage as $key=>$item){
+                $arrItem = explode('/',$item);
+                unset($arrItem[0],$arrItem[1],$arrItem[2]);
+                $newUrlImage = implode('/',$arrItem);
+                $result[$key] = $newUrlImage;
+            }
+            return $result;
+        }else{
+            $arrImage = explode('/',$urlImage);
+            unset($arrImage[0],$arrImage[1],$arrImage[2]);
+            $newUrlImage = implode('/',$arrImage);
+            return $newUrlImage;
+        }
     }
 }

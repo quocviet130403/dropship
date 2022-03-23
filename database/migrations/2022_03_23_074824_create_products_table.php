@@ -17,9 +17,9 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('product');
-            $table->string('image');
             $table->integer('price');
             $table->integer('old_price');
+            $table->text('desc');
             $table->enum('status',[0,1])->default(0);
             $table->enum('sale',[0,1])->default(0);
             $table->unsignedBigInteger('category_id');
