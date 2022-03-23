@@ -427,6 +427,10 @@ NProgress.start();
                         <li >
                           <a href="{{route('category.index')}}">Category</a>
                         </li>
+
+                        <li >
+                          <a href="{{route('product.index')}}">Products</a>
+                        </li>
                       
                         
                       </div>
@@ -810,6 +814,34 @@ NProgress.start();
           position: 'center',
           icon: 'success',
           title: 'Add Category Success !!!',
+          showConfirmButton: false,
+          timer: 1500
+      })
+  })
+</script>
+@endif
+
+@if(Session::get('update'))
+<script>
+  $(window).on('load',function(){
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Update Category Success !!!',
+          showConfirmButton: false,
+          timer: 1500
+      })
+  })
+</script>
+@endif
+
+@if(Session::get('delete'))
+<script>
+  $(window).on('load',function(){
+      Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Delete Category Success !!!',
           showConfirmButton: false,
           timer: 1500
       })

@@ -43,9 +43,12 @@ Route::group(['middleware' => 'auth'], function () {
             return view('admin.users.index');
         })->name('admin.user.index');
 
-        //controller
-
+        //categories
         Route::resource('category', 'CategoryController');
+
+        //products
+        Route::resource('product', 'ProductController');
+
 
     });
 });

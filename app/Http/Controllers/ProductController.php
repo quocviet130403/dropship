@@ -3,24 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Categories\CategoryRepositoryInterface;
+use App\Repository\Products\ProductRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoryRepositoryInterface $categoryRepositoryInterface)
+    public function index(ProductRepositoryInterface $productRepositoryInterface)
     {
         //
-        $categories = $categoryRepositoryInterface->getAll();
+        $listProducts = $productRepositoryInterface->getAll();
         $data = [
-            'categories' => $categories
+            'listProducts' => $listProducts
         ];
-        return view('admin.categories.index',$data);
+        return view('admin.products.index',$data);
     }
 
     /**
@@ -35,7 +35,7 @@ class CategoryController extends Controller
         $data = [
             'categories' => $categories
         ];
-        return view('admin.categories.create',$data);
+        return view('admin.products.create',$data);
     }
 
     /**
@@ -44,13 +44,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, CategoryRepositoryInterface $categoryRepositoryInterface)
+    public function store(Request $request)
     {
         //
-        $data = $request->input();
-        $data = Arr::except($data, ['_token']);
-        $categoryRepositoryInterface->addOrUpdate($data);
-        return back()->with('status',true);
     }
 
     /**
@@ -70,16 +66,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id,CategoryRepositoryInterface $categoryRepositoryInterface)
+    public function edit($id)
     {
         //
-        $categories = $categoryRepositoryInterface->getAll();
-        $category = $categoryRepositoryInterface->getById($id);
-        $data = [
-            'categories' => $categories,
-            'category' => $category
-        ];
-        return view('admin.categories.create',$data);
     }
 
     /**
@@ -89,14 +78,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id,CategoryRepositoryInterface $categoryRepositoryInterface)
+    public function update(Request $request, $id)
     {
         //
-        $data = $request->input();
-        $data = Arr::except($data, ['_token','_method']);
-        $categoryRepositoryInterface->updateById($id,$data);
-        return back()->with('update',true);
-        
     }
 
     /**
@@ -105,9 +89,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id,CategoryRepositoryInterface $categoryRepositoryInterface)
+    public function destroy($id)
     {
-        $categoryRepositoryInterface->deleteById($id);
-        return back()->with('delete',true);
+        //
     }
 }

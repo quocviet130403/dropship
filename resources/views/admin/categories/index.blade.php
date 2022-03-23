@@ -11,6 +11,7 @@
 <div class="card-header justify-content-between">
   <h2>List Categories</h2>
   <div class="date-range-report ">
+    <a href="{{route('category.create')}}" class="btn btn-success mr-4">Add Category</a>
     <span></span>
   </div>
 </div>
@@ -47,10 +48,14 @@
                 <a class="dropdown-toggle icon-burger-mini" href="" role="button" id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static"></a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order1">
                   <li class="dropdown-item">
-                        <a href="#">Edit</a>
+                        <a href="{{route('category.edit',$item->id)}}">Edit</a>
                     </li>
                     <li class="dropdown-item">
-                        <a href="#">Delete</a>
+                      <form action="{{route('category.destroy',$item->id)}}" method="POST">
+                          @csrf
+                          <input name="_method" type="hidden" value="DELETE">
+                          <button type="submit">Delete</button>
+                      </form>
                   </li>
                 </ul>
               </div>

@@ -3,14 +3,15 @@
 use App\Category;
 
 if (!function_exists('show_categories')) {
-    function show_categories($categories,$parent_id=0,$level=0)
+    function show_categories($categories,$active=null,$parent_id=0,$level=0)
     {
         $result = "";
         foreach($categories as $category){
             if($category->parent_id == $parent_id){
                 $category_level = str_repeat('-',$level) . $category->category;
-                $result .= "<option value='$category->id'>$category_level</option>";
-                $child = show_categories($categories,$category->id,$level+1);
+                $selected = $active == $category->id ? 'selected' : '';
+                $result .= "<option value='$category->id' $selected>$category_level</option>";
+                $child = show_categories($categories,$active=null,$category->id,$level+1);
                 $result = $result . $child;
             }
         }
