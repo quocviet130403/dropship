@@ -13,6 +13,14 @@ class Product extends Model
         'code','product','price','old_price','status','sale','category_id','desc'
     ];
 
+    public function categories(){
+        return $this->belongsTo('App\Category','category_id');
+    }
+
+    public function images(){
+        return $this->hasMany('App\Image');
+    }
+
     
 
 }

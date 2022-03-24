@@ -26,16 +26,12 @@
                                     <input type="text" class="form-control" id="validationServer01" name="product" value="{{isset($product) ? $product->product : ''}}" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="validationServer01">Code</label>
-                                    <input type="text" class="form-control" id="validationServer01" name="code" value="{{isset($product) ? $product->code : ''}}" required>
-                                </div>
-                                <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Price</label>
                                     <input type="number" class="form-control" id="validationServer01" name="price" value="{{isset($product) ? $product->price : ''}}" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Price Old</label>
-                                    <input type="number" class="form-control" id="validationServer01" name="price_old" value="{{isset($product) ? $product->price_old : ''}}" required>
+                                    <input type="number" class="form-control" id="validationServer01" name="old_price" value="{{isset($product) ? $product->price_old : ''}}" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Desc</label>
@@ -79,7 +75,7 @@
                                             <i class="fa fa-picture-o"></i> Choose
                                           </a>
                                         </span>
-                                        <input id="thumbnail" class="form-control" type="text" name="filepath">
+                                        <input id="thumbnail" class="form-control" type="text" name="filepath" required>
                                       </div>
                                       <img id="holder" style="margin-top:15px;max-height:100px;">
                                 </div>

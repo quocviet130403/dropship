@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Product;
 
 if (!function_exists('show_categories')) {
     function show_categories($categories,$active=null,$parent_id=0,$level=0)
@@ -24,6 +25,13 @@ if (!function_exists('get_categories')) {
     {
         $categories = app(Category::class)->select('*')->get();
         return $categories;
+    }
+}
+
+if (!function_exists('getByProduct')) {
+    function getByProduct($product)
+    {
+        return app(Product::class)->select('*')->where('product',$product)->first();
     }
 }
 

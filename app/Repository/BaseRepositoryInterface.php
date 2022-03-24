@@ -8,4 +8,5 @@ interface BaseRepositoryInterface{
     public function getById($id);
     public function updateById($id,$data);
     public function deleteById($id);
+    public function getAllName();
 }

@@ -12,4 +12,5 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {   
         parent::__construct($product);
     }
+
 }

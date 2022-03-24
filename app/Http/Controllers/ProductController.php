@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Repository\Categories\CategoryRepositoryInterface;
+use App\Repository\Images\ImageRepositoryInterface;
 use App\Repository\Products\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -45,15 +47,41 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ProductRepositoryInterface $productRepositoryInterface)
+    public function store(Request $request, ProductRepositoryInterface $productRepositoryInterface,ImageRepositoryInterface $imageRepositoryInterface)
     {
         //
+
         $data = $request->input();
         $data = Arr::except($data, ['_token','filepath']);
+        $listProducts = $productRepositoryInterface->getAllName();
+        $data['code'] = Str::random(8);
+        if(!blank($listProducts)){
+            foreach($listProducts as $item){
+                if($item->product == $data['product']){
+                    return back()->with('exist',true);
+                }
+            }
+        }
+        $productRepositoryInterface->addOrUpdate($data);
+        $productId = getByProduct($data['product'])->id;
         $urlImage = convert_image($request->input('filepath'));
-        return $urlImage;
-        // $productRepositoryInterface->addOrUpdate($data);
-        // return back()->with('status',true);
+        if(is_array($urlImage)){
+            foreach($urlImage as $image){
+                $data = [
+                    'image' => $image,
+                    'product_id' => $productId
+                ];
+                $imageRepositoryInterface->addOrUpdate($data);
+            }
+            return back()->with('status',true);
+        }else{
+            $data = [
+                'image' => $urlImage,
+                'product_id' => $productId
+            ];
+            $imageRepositoryInterface->addOrUpdate($data);
+            return back()->with('status',true);
+        }
     }
 
     /**

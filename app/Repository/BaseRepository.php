@@ -27,4 +27,7 @@ class BaseRepository implements BaseRepositoryInterface{
     public function deleteById($id){
         return $this->model->find($id)->delete();
     }
+    public function getAllName(){
+        return $this->model->select('product')->get();
+    }
 }
