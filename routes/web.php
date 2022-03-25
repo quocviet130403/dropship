@@ -49,7 +49,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         //products
         Route::resource('product', 'ProductController');
+        Route::get('/delete-image/{id}','ProductController@deleteImage')->name('product.image.delete');
 
+        //customers
+
+        Route::resource('customer','CustomerController');
+        Route::get('delete-product-customer/{productId}/{customerId}','CustomerController@deleteProductCustomer')->name('product.customer.delete');
 
     });
 });

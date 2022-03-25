@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Customer_Product;
 use App\Product;
 
 if (!function_exists('show_categories')) {
@@ -9,10 +10,10 @@ if (!function_exists('show_categories')) {
         $result = "";
         foreach($categories as $category){
             if($category->parent_id == $parent_id){
-                $category_level = str_repeat('-',$level) . $category->category;
+                $category_level = str_repeat('-',$level) .' '. $category->category;
                 $selected = $active == $category->id ? 'selected' : '';
                 $result .= "<option value='$category->id' $selected>$category_level</option>";
-                $child = show_categories($categories,$active=null,$category->id,$level+1);
+                $child = show_categories($categories,$active=$active,$category->id,$level+1);
                 $result = $result . $child;
             }
         }
@@ -32,6 +33,30 @@ if (!function_exists('getByProduct')) {
     function getByProduct($product)
     {
         return app(Product::class)->select('*')->where('product',$product)->first();
+    }
+}
+
+if (!function_exists('totalPrice')) {
+    function totalPrice($listProduct)
+    {
+        $result = 0;
+        foreach($listProduct as $product){
+            $result += $product->price;
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('getQty')) {
+    function getQty($productId,$customerId)
+    {
+        $qty = app(Customer_Product::class)
+        ->select('qty')
+        ->where('product_id',$productId)
+        ->where('customer_id',$customerId)
+        ->first();
+
+        return $qty->qty;
     }
 }
 

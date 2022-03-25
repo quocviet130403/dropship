@@ -30,7 +30,7 @@
     <tbody>
         @forelse (get_categories() as $key=>$item)
         <tr>
-            <td >{{$key}}</td>
+            <td >{{$key+1}}</td>
             <td >
               <a class="text-dark" href="">{{$item->category}}</a>
             </td>

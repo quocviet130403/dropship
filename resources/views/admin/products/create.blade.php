@@ -31,11 +31,11 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Price Old</label>
-                                    <input type="number" class="form-control" id="validationServer01" name="old_price" value="{{isset($product) ? $product->price_old : ''}}" required>
+                                    <input type="number" class="form-control" id="validationServer01" name="old_price" value="{{isset($product) ? $product->old_price : ''}}" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Desc</label>
-                                    <textarea name="desc" id="desc" cols="30" rows="10" class="form-control"></textarea>
+                                    <textarea name="desc" id="desc" cols="30" rows="10" class="form-control">{!! isset($product) ? $product->desc : "" !!}</textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="status">Status</label>
@@ -57,17 +57,12 @@
                                     <select name="category_id" class="form-control" required>
                                         <option value="">-- Chọn --</option>
                                         @php
-                                            $parent_id = isset($product) ? $product->parent_id : null;
+                                            $parent_id = isset($product) ? $product->categories->id : null;
                                             echo show_categories($categories,$parent_id);
                                         @endphp
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    {{-- <label for="image">Hình ảnh</label>
-                                    <input type="file" name="image" id="image" class="form-control-file" required> --}}
-                                    {{-- <div id="list-image-update">
-                                        <img src="" alt="image">
-                                    </div> --}}
                                     <label for="image">Hình ảnh</label>
                                     <div class="input-group">
                                         <span class="input-group-btn">
@@ -75,9 +70,20 @@
                                             <i class="fa fa-picture-o"></i> Choose
                                           </a>
                                         </span>
-                                        <input id="thumbnail" class="form-control" type="text" name="filepath" required>
-                                      </div>
-                                      <img id="holder" style="margin-top:15px;max-height:100px;">
+                                        <input id="thumbnail" class="form-control" type="text" name="filepath" {{ isset($product) ? "" : "required"}}>
+                                    </div>
+                                    <img id="holder" style="margin-top:15px;max-height:100px;">
+                                    <div id="list-image-update">
+                                        @if(isset($product))
+                                            @forelse($product->images as $image)
+                                                <div class="image-update-item">
+                                                    <a href="{{route('product.image.delete',$image->id)}}" class="icon-update-close">&times;</a>
+                                                    <img style="width:100px;height:100px;" src="{{asset($image->image)}}" alt="image">
+                                                </div>
+                                            @empty
+                                            @endforelse
+                                        @endif
+                                    </div>
                                 </div>
 
                             </div>
@@ -89,8 +95,28 @@
         </div>
     </div>
 
-    
-
 
   </div>
 @endsection
+
+
+<style>
+    #list-image-update{
+        display: flex;
+    }
+    .image-update-item{
+        position: relative;
+        width:100px;
+        height:100px;
+        margin-right:20px;
+    }
+    .icon-update-close{
+        position: absolute;
+        cursor: pointer;
+        display: block;
+        top: -20px;
+        right: 0;
+        font-size: 20px;
+        color: #000;
+    }
+</style>

@@ -412,7 +412,6 @@ NProgress.start();
                       </div>
                     </ul>
                   </li> --}}
-                  
 
                   
                   
@@ -432,10 +431,14 @@ NProgress.start();
                           <a href="{{route('product.index')}}">Products</a>
                         </li>
                       
+                        <li >
+                          <a href="{{route('customer.index')}}">Customer</a>
+                        </li>
 
                         <li >
                           <a href="{{asset('/filemanager')}}">Media</a>
                         </li>
+
                         
                       </div>
                     </ul>
@@ -713,14 +716,14 @@ NProgress.start();
   <li class="dropdown user-menu">
     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
       {{-- <img src="{{asset('public/img/user/user.png')}}" class="user-image" alt="User Image" /> --}}
-      <span class="d-none d-lg-inline-block">Abdus Salam</span>
+      <span class="d-none d-lg-inline-block">{{Auth::user()->name}}</span>
     </button>
     <ul class="dropdown-menu dropdown-menu-right">
       <!-- User image -->
       <li class="dropdown-header">
         {{-- <img src="{{asset('public/img/user/user.png')}}" class="img-circle" alt="User Image" /> --}}
         <div class="d-inline-block">
-          Abdus Salam <small class="pt-1">abdus@gmail.com</small>
+          {{Auth::user()->name}} <small class="pt-1">{{Auth::user()->email}}</small>
         </div>
       </li>
 
@@ -761,7 +764,7 @@ NProgress.start();
 </header>
 @yield('content')
 
-<footer class="footer mt-auto">
+{{-- <footer class="footer mt-auto">
   <div class="copyright bg-white">
     <p>
       &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
@@ -773,13 +776,13 @@ NProgress.start();
       >.
     </p>
   </div>
+</footer> --}}
+
   <script>
       var d = new Date();
       var year = d.getFullYear();
       document.getElementById("copy-year").innerHTML = year;
   </script>
-</footer>
-
 </div>
 
 
@@ -807,6 +810,7 @@ NProgress.start();
 <script src="{{asset('public/js/map.js')}}"></script>
 <script src="{{asset('public/js/custom.js')}}"></script>
 <script src="{{asset('public/js/app.js')}}"></script>
+<script src="{{asset('public/js/main.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('public/js/sleek.js')}}"></script>
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>

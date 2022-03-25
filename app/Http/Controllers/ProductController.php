@@ -101,9 +101,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,ProductRepositoryInterface $productRepositoryInterface, CategoryRepositoryInterface $categoryRepositoryInterface)
     {
         //
+        $product = $productRepositoryInterface->getById($id);
+        $categories = $categoryRepositoryInterface->getAll();
+        $data = [
+            'product' => $product,
+            'categories' => $categories
+        ];
+        return view('admin.products.create',$data);
     }
 
     /**
@@ -113,9 +120,34 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, ProductRepositoryInterface $productRepositoryInterface,ImageRepositoryInterface $imageRepositoryInterface)
     {
         //
+        $data = $request->input();
+        $data = Arr::except($data, ['_token','filepath']);
+        $product = $productRepositoryInterface->getById($id);
+        $product->update($data);
+        $urlImage = convert_image($request->input('filepath'));
+        if($urlImage != ''){
+            if(is_array($urlImage)){
+                foreach($urlImage as $image){
+                    $data = [
+                        'image' => $image,
+                        'product_id' => $product->id
+                    ];
+                    $imageRepositoryInterface->addOrUpdate($data);
+                }
+                return back()->with('update',true);
+            }else{
+                $data = [
+                    'image' => $urlImage,
+                    'product_id' => $product->id
+                ];
+                $imageRepositoryInterface->addOrUpdate($data);
+                return back()->with('update',true);
+            }
+        }
+        return back()->with('update',true); 
     }
 
     /**
@@ -124,8 +156,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, ProductRepositoryInterface $productRepositoryInterface)
     {
         //
+        $productRepositoryInterface->deleteById($id);
+        return back()->with('delete',true);
+    }
+    public function deleteImage($id,ImageRepositoryInterface $imageRepositoryInterface){
+        $imageRepositoryInterface->deleteById($id);
+        return back()->with('delete',true);
     }
 }

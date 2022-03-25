@@ -7,6 +7,8 @@ use App\Repository\BaseRepository;
 use App\Repository\BaseRepositoryInterface;
 use App\Repository\Categories\CategoryRepository;
 use App\Repository\Categories\CategoryRepositoryInterface;
+use App\Repository\Customers\CustomerRepository;
+use App\Repository\Customers\CustomerRepositoryInterface;
 use App\Repository\Products\ProductRepository;
 use App\Repository\Products\ProductRepositoryInterface;
 use App\Repository\Images\ImageRepository;
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(CategoryRepositoryInterface::class,CategoryRepository::class);
         $this->app->singleton(ProductRepositoryInterface::class,ProductRepository::class);
         $this->app->singleton(ImageRepositoryInterface::class,ImageRepository::class);
+        $this->app->singleton(CustomerRepositoryInterface::class,CustomerRepository::class);
     }
 
     /**
