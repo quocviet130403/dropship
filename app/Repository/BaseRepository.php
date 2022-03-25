@@ -30,4 +30,7 @@ class BaseRepository implements BaseRepositoryInterface{
     public function getAllName(){
         return $this->model->select('product')->get();
     }
+    public function getPaginate($limit){
+        return $this->model->paginate($limit);
+    }
 }

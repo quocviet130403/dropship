@@ -69,6 +69,7 @@
         @endforelse
     </tbody>
   </table>
+  {{$listCustomers->links()}}
 </div>
 </div>
 </div>

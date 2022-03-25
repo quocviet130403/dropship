@@ -36,7 +36,7 @@
 
         <div class="list-product mt-4">
             <h5>List Products</h5>
-            <table class="mt-4 form-list-product" style="width:100%" data-url="" data-token="{{ csrf_token() }}">
+            <table class="mt-4 form-list-product" style="width:100%">
                 <thead>
                     <td>STT</td>
                     <td>Image</td>

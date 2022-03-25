@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function index(ProductRepositoryInterface $productRepositoryInterface)
     {
         //
-        $listProducts = $productRepositoryInterface->getAll();
+        $listProducts = $productRepositoryInterface->getPaginate(20);
         $data = [
             'listProducts' => $listProducts
         ];

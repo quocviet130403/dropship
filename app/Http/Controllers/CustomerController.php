@@ -18,7 +18,7 @@ class CustomerController extends Controller
     public function index(CustomerRepositoryInterface $customerRepositoryInterface)
     {
         //
-        $listCustomers = $customerRepositoryInterface->getAll();
+        $listCustomers = $customerRepositoryInterface->getPaginate(20);
         $data = [
             'listCustomers' => $listCustomers
         ];

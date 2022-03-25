@@ -9,4 +9,5 @@ interface BaseRepositoryInterface{
     public function updateById($id,$data);
     public function deleteById($id);
     public function getAllName();
+    public function getPaginate($limit);
 }

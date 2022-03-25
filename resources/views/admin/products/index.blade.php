@@ -87,6 +87,8 @@
         @endforelse
     </tbody>
   </table>
+  {{$listProducts->links()}}
+  
 </div>
 </div>
 </div>
