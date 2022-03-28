@@ -19,12 +19,29 @@ use Illuminate\Support\Facades\Route;
 
 //Web
 Route::get('/', function () {
-    return view('home');
+    return view('web.index');
 });
-Route::get('/brand', function () {
-    return view('brand');
+Route::get('/list', function () {
+    return view('web.list');
 });
-
+Route::get('/contact', function () {
+    return view('web.contact');
+});
+Route::get('/about', function () {
+    return view('web.about');
+});
+Route::get('/cart', function () {
+    return view('web.cart.cart');
+});
+Route::get('/checkout', function () {
+    return view('web.cart.checkout');
+});
+Route::get('/complete', function () {
+    return view('web.cart.complete');
+});
+Route::get('/detail', function () {
+    return view('web.detail');
+});
 
 Auth::routes();
 
@@ -65,4 +82,3 @@ Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
