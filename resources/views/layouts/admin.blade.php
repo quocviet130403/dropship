@@ -422,6 +422,10 @@ NProgress.start();
                     </a>
                     <ul  class="collapse"  id="others">
                       <div class="sub-menu">
+
+                        <li >
+                          <a href="{{route('page.index')}}">Pages</a>
+                        </li>
                         
                         <li >
                           <a href="{{route('category.index')}}">Category</a>

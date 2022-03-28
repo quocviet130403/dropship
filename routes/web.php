@@ -56,10 +56,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin'], function () {
 
         //user
-
         Route::get('/user',function(){
             return view('admin.users.index');
         })->name('admin.user.index');
+
+        //pages
+
+        Route::resource('page','PageController');
 
         //categories
         Route::resource('category', 'CategoryController');
