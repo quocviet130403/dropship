@@ -413,6 +413,24 @@ NProgress.start();
                     </ul>
                   </li> --}}
 
+
+                  <li  class="has-sub" >
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
+                      aria-expanded="false" aria-controls="pages">
+                      <span class="nav-text">Manager Pages</span> <b class="caret"></b>
+                    </a>
+                    <ul  class="collapse"  id="pages">
+                      <div class="sub-menu">
+
+                        <li >
+                          <a href="#">Trang chủ</a>
+                        </li>
+
+                        
+                      </div>
+                    </ul>
+                  </li>
+
                   
                   
                   <li  class="has-sub" >

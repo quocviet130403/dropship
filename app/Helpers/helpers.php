@@ -2,7 +2,9 @@
 
 use App\Category;
 use App\Customer_Product;
+use App\Page;
 use App\Product;
+use Illuminate\Support\Str;
 
 if (!function_exists('show_categories')) {
     function show_categories($categories,$active=null,$parent_id=0,$level=0)
@@ -79,5 +81,31 @@ if (!function_exists('convert_image')) {
             $newUrlImage = implode('/',$arrImage);
             return $newUrlImage;
         }
+    }
+}
+
+if (!function_exists('getPages')) {
+    function getPages()
+    {
+        return app(Page::class)
+        ->select('*')
+        ->where('status','1')
+        ->get();
+    }
+}
+
+if (!function_exists('convertSlug')) {
+    function convertSlug($string)
+    {
+        return Str::slug($string);
+    }
+}
+
+
+if (!function_exists('getProducts')) {
+    function getProducts()
+    {
+        return app(Product::class)
+        ->all();
     }
 }

@@ -21,40 +21,34 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('web.index');
 });
-Route::get('/list', function () {
-    return view('web.list');
-});
-Route::get('/contact', function () {
-    return view('web.contact');
-});
-Route::get('/about', function () {
-    return view('web.about');
-});
-Route::get('/cart', function () {
+
+
+Route::get('cart/cart', function () {
     return view('web.cart.cart');
 });
-Route::get('/checkout', function () {
+Route::get('cart/checkout', function () {
     return view('web.cart.checkout');
 });
-Route::get('/complete', function () {
+Route::get('cart/complete', function () {
     return view('web.cart.complete');
 });
-Route::get('/detail', function () {
+Route::get('product/detail', function () {
     return view('web.detail');
 });
 
 Auth::routes();
 
+Route::get('/{pages}','WebController@show')->name('web.show');
 
 //Admin
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/admin', function ()    {
-        return view('admin.dasboard.index');
-    });
-    
     //Users
     Route::group(['prefix' => 'admin'], function () {
-
+        
+        Route::get('/dasboard', function ()    {
+            return view('admin.dasboard.index');
+        });
+        
         //user
         Route::get('/user',function(){
             return view('admin.users.index');

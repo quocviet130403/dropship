@@ -101,28 +101,20 @@
             </div>
         </div>
         <div class="row row-pb-md">
+           @forelse(getProducts() as $product)
             <div class="col-lg-3 mb-4 text-center">
                 <div class="product-entry border">
                     <a href="#" class="prod-img">
-                        <img src="../../public/web/images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        <img src="{{asset($product->images[0]->image)}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
                     </a>
                     <div class="desc">
-                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-                        <span class="price">$139.00</span>
+                        <h2><a href="#">{{$product->product}}</a></h2>
+                        <span class="price">{{number_format($product->price)}} VNĐ</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 mb-4 text-center">
-                <div class="product-entry border">
-                    <a href="#" class="prod-img">
-                        <img src="../../public/web/images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-                    </a>
-                    <div class="desc">
-                        <h2><a href="#">Women's Minam Meaghan</a></h2>
-                        <span class="price">$139.00</span>
-                    </div>
-                </div>
-            </div>
+           @empty
+           @endforelse
             <div class="col-lg-3 mb-4 text-center">
                 <div class="product-entry border">
                     <a href="#" class="prod-img">
