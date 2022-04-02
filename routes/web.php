@@ -32,13 +32,11 @@ Route::get('cart/checkout', function () {
 Route::get('cart/complete', function () {
     return view('web.cart.complete');
 });
-Route::get('product/detail', function () {
-    return view('web.detail');
-});
 
 Auth::routes();
 
 Route::get('/{pages}','WebController@show')->name('web.show');
+Route::get('san-pham/chi-tiet/{id}', 'WebController@showDetail')->name('web.detail');
 
 //Admin
 Route::group(['middleware' => 'auth'], function () {

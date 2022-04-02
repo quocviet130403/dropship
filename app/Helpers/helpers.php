@@ -103,9 +103,10 @@ if (!function_exists('convertSlug')) {
 
 
 if (!function_exists('getProducts')) {
-    function getProducts()
+    function getProducts($limit=20)
     {
         return app(Product::class)
-        ->all();
+        ->select('*')
+        ->paginate($limit);
     }
 }

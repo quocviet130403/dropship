@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\Products\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
@@ -21,5 +22,13 @@ class WebController extends Controller
         }
 
         return abort(404);
+    }
+
+    public function showDetail($id, ProductRepositoryInterface $productRepositoryInterface){
+        $product = $productRepositoryInterface->getById($id);
+        $data = [
+            'product' => $product
+        ];
+        return view('web.detail',$data);
     }
 }
