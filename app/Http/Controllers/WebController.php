@@ -14,7 +14,10 @@ class WebController extends Controller
             'nu'=>'list',
             'gioi-thieu' => 'about',
             'lien-he' => 'contact',
-            'trang-chu' => 'index'
+            'trang-chu' => 'index',
+            'gio-hang' => 'cart.cart',
+            'kiem-tra' => 'cart.checkout',
+            'thanh-cong' => 'cart.complete'
         ];
         if(array_key_exists($page,$listPage)){
             $pathView = "web.".$listPage[$page];

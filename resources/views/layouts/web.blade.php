@@ -4,6 +4,7 @@
 	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
@@ -66,7 +67,7 @@
 									
 								@endforelse
 
-                                <li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Giỏ Hàng [0]</a></li>
+                                <li class="cart"><a href="{{asset('/gio-hang')}}"><i class="icon-shopping-cart"></i> Giỏ Hàng [<span class="num">{{Cart::content()->count()}}</span>]</a></li>
                             </ul>
                         </div>
                     </div>
@@ -212,6 +213,64 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{asset('public/web/js/jquery.stellar.min.js')}}"></script>
 	<!-- Main -->
 	<script src="{{asset('public/web/js/main.js')}}"></script>
+	<script src="{{asset('public/js/main.js')}}"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	@if(Session::get('success'))
+	<script>
+		$(window).on('load',function(){
+			Swal.fire({
+				position: 'center',
+				icon: 'success',
+				title: 'Thêm Thành Công',
+				showConfirmButton: false,
+				timer: 1500
+			})
+		})
+	</script>
+	@endif	
+	
+	@if(Session::get('update'))
+	<script>
+	  $(window).on('load',function(){
+		  Swal.fire({
+			  position: 'center',
+			  icon: 'success',
+			  title: 'Update Success !!!',
+			  showConfirmButton: false,
+			  timer: 1500
+		  })
+	  })
+	</script>
+	@endif
+	
+	@if(Session::get('delete'))
+	<script>
+	  $(window).on('load',function(){
+		  Swal.fire({
+			  position: 'center',
+			  icon: 'success',
+			  title: 'Delete Success !!!',
+			  showConfirmButton: false,
+			  timer: 1500
+		  })
+	  })
+	</script>
+	@endif
+	
+	
+	@if(Session::get('exist'))
+	<script>
+	  $(window).on('load',function(){
+		  Swal.fire({
+			  position: 'center',
+			  icon: 'error',
+			  title: 'Already Exist !!!',
+			  showConfirmButton: false,
+			  timer: 1500
+		  })
+	  })
+	</script>
+	@endif
 
 	</body>
 </html>

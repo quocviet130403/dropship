@@ -43,27 +43,28 @@
                         <span>Remove</span>
                     </div>
                 </div>
+                @forelse(Cart::content() as $product)
                 <div class="product-cart d-flex">
                     <div class="one-forth">
-                        <div class="product-img" style="background-image: url(../../public/web/images/item-6.jpg);">
+                        <div class="product-img" style="background-image: url({{asset($product->options->image)}});">
                         </div>
                         <div class="display-tc">
-                            <h3>Product Name</h3>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$68.00</span>
+                            <h3>{{$product->name}}</h3>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
+                            <span class="price">{{number_format($product->price)}} VNĐ</span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
                         <div class="display-tc">
-                            <span class="price">$120.00</span>
+                            <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" data-url="{{route('cart.update')}}" data-price="{{$product->price}}" data-id="{{$product->rowId}}" value="{{$product->qty}}" min="1" max="100">
+                        </div>
+                    </div>
+                    <div class="one-eight text-center">
+                        <div class="display-tc">
+                            <span class="price">{{number_format($product->price * $product->qty)}} VNĐ</span>
                         </div>
                     </div>
                     <div class="one-eight text-center">
@@ -72,66 +73,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="product-cart d-flex">
-                    <div class="one-forth">
-                        <div class="product-img" style="background-image: url(../../public/web/images/item-7.jpg);">
-                        </div>
-                        <div class="display-tc">
-                            <h3>Product Name</h3>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$68.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <form action="#">
-                                <input type="text" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$120.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <a href="#" class="closed"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-cart d-flex">
-                    <div class="one-forth">
-                        <div class="product-img" style="background-image: url(../../public/web/images/item-8.jpg);">
-                        </div>
-                        <div class="display-tc">
-                            <h3>Product Name</h3>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$68.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100">
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <span class="price">$120.00</span>
-                        </div>
-                    </div>
-                    <div class="one-eight text-center">
-                        <div class="display-tc">
-                            <a href="#" class="closed"></a>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                @endforelse
+                
             </div>
         </div>
         <div class="row row-pb-lg">
@@ -153,12 +97,12 @@
                         <div class="col-sm-4 text-center">
                             <div class="total">
                                 <div class="sub">
-                                    <p><span>Subtotal:</span> <span>$200.00</span></p>
-                                    <p><span>Delivery:</span> <span>$0.00</span></p>
-                                    <p><span>Discount:</span> <span>$45.00</span></p>
+                                    <p><span>Tổng:</span> <span class="total-price">{{Cart::total()}} VNĐ</span></p>
+                                    {{-- <p><span>Delivery:</span> <span>$0.00</span></p> --}}
+                                    <p><span>Ship:</span> <span>30.000 VNĐ</span></p>
                                 </div>
                                 <div class="grand-total">
-                                    <p><span><strong>Total:</strong></span> <span>$450.00</span></p>
+                                    <p><span><strong>Tổng:</strong></span> <span class="total-price">{{Cart::total()}} VNĐ</span></p>
                                 </div>
                             </div>
                         </div>

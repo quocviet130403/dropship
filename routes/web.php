@@ -23,20 +23,15 @@ Route::get('/', function () {
 });
 
 
-Route::get('cart/cart', function () {
-    return view('web.cart.cart');
-});
-Route::get('cart/checkout', function () {
-    return view('web.cart.checkout');
-});
-Route::get('cart/complete', function () {
-    return view('web.cart.complete');
-});
-
 Auth::routes();
 
 Route::get('/{pages}','WebController@show')->name('web.show');
 Route::get('san-pham/chi-tiet/{id}', 'WebController@showDetail')->name('web.detail');
+
+//Cart
+
+Route::post('cart/add/{id}','CartController@addCart')->name('cart.add');
+Route::post('cart/update','CartController@updateCart')->name('cart.update');
 
 //Admin
 Route::group(['middleware' => 'auth'], function () {

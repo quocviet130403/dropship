@@ -6,6 +6,7 @@
 @endsection
 
 
+
 <div class="colorlib-product">
     <div class="container">
         <div class="row row-pb-lg product-detail-wrap">
@@ -25,9 +26,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="product-desc">
-                    <h3>Women's Boots Shoes Maca</h3>
+                    <h3>{{$product->product}}</h3>
                     <p class="price">
-                        <span>$68.00</span> 
+                        <span>{{number_format($product->price)}} VNĐ</span> 
                         <span class="rate">
                             <i class="icon-star-full"></i>
                             <i class="icon-star-full"></i>
@@ -37,7 +38,7 @@
                             (74 Rating)
                         </span>
                     </p>
-                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                    <p>{!! $product->desc !!}</p>
                     {{-- <div class="size-wrap">
                         <div class="block-26 mb-2">
                             <h4>Size</h4>
@@ -67,6 +68,8 @@
                        </ul>
                     </div>
                     </div>
+            <form action="{{route('cart.add',$product->id)}}" method="POST">
+                @csrf
              <div class="input-group mb-4">
                  <span class="input-group-btn">
                     <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
@@ -82,11 +85,12 @@
               </div>
               <div class="row">
                   <div class="col-sm-12 text-center">
-                            <p class="addtocart"><a href="cart.html" class="btn btn-primary btn-addtocart"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+                                <p class="addtocart"><button type="submit" class="btn btn-primary btn-addtocart"> Add to Cart</button></p>
                         </div>
                     </div>
                 </div>
             </div>
+            </form>
         </div>
 
         <div class="container">
