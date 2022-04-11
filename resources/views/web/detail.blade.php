@@ -11,6 +11,7 @@
     <div class="container">
         <div class="row row-pb-lg product-detail-wrap">
             <div class="col-sm-8">
+                {{-- <img src="{{asset($product->images[0]->image)}}" class="img-fluid" alt="Free html5 bootstrap 4 template"> --}}
                 <div class="owl-carousel">
                     @forelse($product->images as $image)
                     <div class="item">

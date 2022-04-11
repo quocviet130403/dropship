@@ -1,3 +1,11 @@
+
+@if(Cart::content()->count() <= 0)
+    <script>
+        location.href = "{{asset('/gio-hang')}}";
+    </script>
+@endif
+
+
 @extends('layouts.web')
 
 @section('content')
@@ -12,114 +20,100 @@
                 <div class="process-wrap">
                     <div class="process text-center active">
                         <p><span>01</span></p>
-                        <h3>Shopping Cart</h3>
+                        <h3>Giỏ hàng</h3>
                     </div>
                     <div class="process text-center active">
                         <p><span>02</span></p>
-                        <h3>Checkout</h3>
+                        <h3>Thanh Toán</h3>
                     </div>
                     <div class="process text-center">
                         <p><span>03</span></p>
-                        <h3>Order Complete</h3>
+                        <h3>Hoàn Thành</h3>
                     </div>
                 </div>
             </div>
         </div>
+    <form action="{{route('cart.addCustomer')}}" method="POST">
+        @csrf
         <div class="row">
             <div class="col-lg-8">
-                <form method="post" class="colorlib-form">
-                    <h2>Billing Details</h2>
-                  <div class="row">
-                   <div class="col-md-12">
-                      <div class="form-group">
-                          <label for="country">Select Country</label>
-                         <div class="form-field">
-                             <i class="icon icon-arrow-down3"></i>
-                            <select name="people" id="people" class="form-control">
-                                  <option value="#">Select country</option>
-                                <option value="#">Alaska</option>
-                                <option value="#">China</option>
-                                <option value="#">Japan</option>
-                                <option value="#">Korea</option>
-                                <option value="#">Philippines</option>
-                            </select>
-                         </div>
-                      </div>
-                   </div>
-
+                <div method="post" class="colorlib-form">
+                    @csrf
+                    <h2>Thanh Toán</h2>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="fname">First Name</label>
-                                <input type="text" id="fname" class="form-control" placeholder="Your firstname">
+                                <label for="fname">Họ</label>
+                                <input type="text" id="fname" name="fname" class="form-control" placeholder="Họ" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="lname">Last Name</label>
-                                <input type="text" id="lname" class="form-control" placeholder="Your lastname">
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="companyname">Company Name</label>
-                            <input type="text" id="companyname" class="form-control" placeholder="Company Name">
-                      </div>
-                   </div>
-
-                   <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="fname">Address</label>
-                            <input type="text" id="address" class="form-control" placeholder="Enter Your Address">
-                      </div>
-                      <div class="form-group">
-                            <input type="text" id="address2" class="form-control" placeholder="Second Address">
-                      </div>
-                   </div>
-                
-                   <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="companyname">Town/City</label>
-                            <input type="text" id="towncity" class="form-control" placeholder="Town or City">
-                      </div>
-                   </div>
-                
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="stateprovince">State/Province</label>
-                                <input type="text" id="fname" class="form-control" placeholder="State Province">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="lname">Zip/Postal Code</label>
-                                <input type="text" id="zippostalcode" class="form-control" placeholder="Zip / Postal">
+                                <label for="lname">Tên</label>
+                                <input type="text" id="lname" name="lname" class="form-control" placeholder="Tên" required>
                             </div>
                         </div>
                     
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">E-mail Address</label>
-                                <input type="text" id="email" class="form-control" placeholder="State Province">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Địa chỉ email" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="Phone">Phone Number</label>
-                                <input type="text" id="zippostalcode" class="form-control" placeholder="">
+                                <input type="text" id="zippostalcode" name="phone_number" class="form-control" placeholder="" min="6" max="13" required>
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <div class="radio">
-                                  <label><input type="radio" name="optradio"> Create an Account? </label>
-                                  <label><input type="radio" name="optradio"> Ship to different address</label>
+                                <label for="country">Tỉnh / Thành phố</label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="calc_shipping_provinces" id="calc_shipping_provinces" class="form-control" required>
+                                        <option value="">Tỉnh / Thành phố</option>
+                                    </select>
+                                    <input class="billing_address_1" name="billing_address_1" type="hidden" value="">
                                 </div>
                             </div>
+                            </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="country">Quận / Huyện</label>
+                                <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="calc_shipping_district" id="calc_shipping_district" class="form-control" required>
+                                        <option value="">Quận / Huyện</option>
+                                    </select>
+                                    <input class="billing_address_2" name="billing_address_2" type="hidden" value="">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="desc-address">Địa chỉ chi tiết</label>
+                                    <input type="text" id="desc_address" name="desc_address" class="form-control" placeholder="Xã, Thôn, ..." required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="desc">Ghi chú (Có thể bỏ trống)</label>
+                                <textarea name="desc" id="" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
                         </div>
-               </div>
-            </form>
+
+                        {{-- <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio"> Create an Account? </label>
+                                    <label><input type="radio" name="optradio"> Ship to different address</label>
+                                </div>
+                            </div>
+                        </div> --}}
+                </div>
+            </div>
             </div>
 
             <div class="col-lg-4">
@@ -129,48 +123,49 @@
                             <h2>Cart Total</h2>
                             <ul>
                                 <li>
-                                    <span>Subtotal</span> <span>$100.00</span>
                                     <ul>
-                                        <li><span>1 x Product Name</span> <span>$99.00</span></li>
-                                        <li><span>1 x Product Name</span> <span>$78.00</span></li>
+                                        @forelse(Cart::content() as $product)
+                                            <li><span>{{$product->qty}} x {{$product->name}}</span> <span style="white-space: nowrap">{{number_format($product->price * $product->qty)}} VNĐ</span></li>
+                                        @empty
+                                        @endforelse
                                     </ul>
                                 </li>
-                                <li><span>Shipping</span> <span>$0.00</span></li>
-                                <li><span>Order Total</span> <span>$180.00</span></li>
+                                <li><span>Vận chuyển</span> <span style="white-space: nowrap">30.000 VNĐ</span></li>
+                                <li><span>Tổng</span> <span style="white-space: nowrap">{{Cart::total()}} VNĐ</span></li>
                             </ul>
                         </div>
-                   </div>
+                    </div>
 
-                   <div class="w-100"></div>
+                    <div class="w-100"></div>
 
-                   <div class="col-md-12">
+                    <div class="col-md-12">
                         <div class="cart-detail">
-                            <h2>Payment Method</h2>
+                            <h2>Phương thức thanh toán</h2>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="radio">
-                                       <label><input type="radio" name="optradio"> Direct Bank Tranfer</label>
+                                        <label><input type="radio" name="optradio" value="0" checked> Thanh toán trực tiếp</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="radio">
-                                       <label><input type="radio" name="optradio"> Check Payment</label>
+                                        <label><input type="radio" name="optradio" value="1"> Thanh toán qua ngân hàng</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="radio">
-                                       <label><input type="radio" name="optradio"> Paypal</label>
+                                        <label><input type="radio" name="optradio"> Paypal</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <div class="checkbox">
-                                       <label><input type="checkbox" value=""> I have read and accept the terms and conditions</label>
+                                        <label><input type="checkbox" value="" required> Tôi đã đọc và chấp nhận những điều trên</label>
                                     </div>
                                 </div>
                             </div>
@@ -179,11 +174,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p><a href="#" class="btn btn-primary">Place an order</a></p>
+                        @if(Cart::content()->count() > 0)
+                            <p><button type="submit" class="btn btn-primary">Thanh Toán</button></p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
+    </form>
     </div>
 </div>
 @endsection

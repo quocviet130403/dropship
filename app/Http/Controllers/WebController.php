@@ -8,20 +8,30 @@ use Illuminate\Http\Request;
 class WebController extends Controller
 {
     //
-    public function show($page){
+    public function show($page, ProductRepositoryInterface $productRepositoryInterface){
+        $breacrumb = strtoupper(str_replace('-', ' ', $page));
         $listPage = [
-            'nam' => 'list',
-            'nu'=>'list',
+            'san-pham' => 'list',
             'gioi-thieu' => 'about',
             'lien-he' => 'contact',
             'trang-chu' => 'index',
             'gio-hang' => 'cart.cart',
-            'kiem-tra' => 'cart.checkout',
+            'thanh-toan' => 'cart.checkout',
             'thanh-cong' => 'cart.complete'
         ];
         if(array_key_exists($page,$listPage)){
             $pathView = "web.".$listPage[$page];
-            return view($pathView);
+            switch($listPage[$page]){
+                case 'list':
+                    $dataPage = $productRepositoryInterface->getPaginate(40);
+                    break;
+                default : $dataPage = '';
+            }
+            $data = [
+                'breacrumb' => $breacrumb,
+                'dataPage' => $dataPage
+            ];
+            return view($pathView, $data);
         }
 
         return abort(404);

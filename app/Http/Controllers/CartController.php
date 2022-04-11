@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
+use App\Http\Requests\CartRequest;
+use App\Repository\Customers\CustomerRepositoryInterface;
 use App\Repository\Products\ProductRepositoryInterface;
 use Gloudemans\Shoppingcart\Cart as ShoppingcartCart;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class CartController extends Controller
 {
@@ -36,5 +40,23 @@ class CartController extends Controller
             'total' => Cart::total(),
         ];
         return json_encode($data);
+    }
+
+    public function addCustomer(Request $request, CustomerRepositoryInterface $customerRepositoryInterface, ProductRepositoryInterface $productRepositoryInterface){
+        $data = $request->input();
+        $data = (object) $data;
+        $customer = [
+            'fullname' => $data->fname . " " . $data->lname,
+            'phone' => $data->phone_number,
+            'email' => $data->email,
+            'address' => "Tỉnh / Thành phố : " . $data->billing_address_1 . ", Huyện : " . $data->billing_address_2 . ", Địa chỉ cụ thể : " . $data->desc_address,
+            'method_pay' => $data->optradio
+        ];
+        $newCustomer = $customerRepositoryInterface->addOrUpdate($customer);
+        foreach(Cart::content() as $product){
+            $newCustomer->products()->attach($product->id,['qty'=>$product->qty]);
+        }
+        Cart::destroy();
+        return redirect(asset('/thanh-cong'))->with('check',true);
     }
 }

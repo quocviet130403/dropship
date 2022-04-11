@@ -11,36 +11,37 @@
                 <div class="process-wrap">
                     <div class="process text-center active">
                         <p><span>01</span></p>
-                        <h3>Shopping Cart</h3>
+                        <h3>Giỏ hàng</h3>
                     </div>
                     <div class="process text-center">
                         <p><span>02</span></p>
-                        <h3>Checkout</h3>
+                        <h3>Thanh Toán</h3>
                     </div>
                     <div class="process text-center">
                         <p><span>03</span></p>
-                        <h3>Order Complete</h3>
+                        <h3>Hoàn Thành</h3>
                     </div>
                 </div>
             </div>
         </div>
+        @if(Cart::content()->count() > 0)
         <div class="row row-pb-lg">
             <div class="col-md-12">
                 <div class="product-name d-flex">
                     <div class="one-forth text-left px-4">
-                        <span>Product Details</span>
+                        <span>Chi Tiết sản phẩm</span>
                     </div>
                     <div class="one-eight text-center">
-                        <span>Price</span>
+                        <span>Giá</span>
                     </div>
                     <div class="one-eight text-center">
-                        <span>Quantity</span>
+                        <span>Số Lượng</span>
                     </div>
                     <div class="one-eight text-center">
-                        <span>Total</span>
+                        <span>Tổng</span>
                     </div>
                     <div class="one-eight text-center px-4">
-                        <span>Remove</span>
+                        <span>Xóa</span>
                     </div>
                 </div>
                 @forelse(Cart::content() as $product)
@@ -78,39 +79,52 @@
                 
             </div>
         </div>
-        <div class="row row-pb-lg">
-            <div class="col-md-12">
-                <div class="total-wrap">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <form action="#">
-                                <div class="row form-group">
-                                    <div class="col-sm-9">
-                                        <input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number...">
+        @else 
+        <div class="row">
+            <div class="col-sm-10 offset-sm-1 text-center">
+                <h2 class="mb-4">Vui lòng mua hàng</h2>
+                <p>
+                    <a href="{{asset('/trang-chu')}}"class="btn btn-primary btn-outline-primary">Trang chủ</a>
+                    <a href="{{asset('/trang-chu')}}"class="btn btn-primary btn-outline-primary"><i class="icon-shopping-cart"></i> Continue Shopping</a>
+                </p>
+            </div>
+        </div>
+        @endif
+        @if(Cart::content()->count() > 0)
+            <div class="row row-pb-lg">
+                <div class="col-md-12">
+                    <div class="total-wrap">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                {{-- <form action="#"> --}}
+                                    <div class="row form-group">
+                                        {{-- <div class="col-sm-9">
+                                            <input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number...">
+                                        </div> --}}
+                                        <div class="col-sm-3">
+                                            {{-- <input type="submit" value="Apply Coupon" class="btn btn-primary"> --}}
+                                            <a href="{{asset('/thanh-toan')}}" class="btn btn-primary">Thanh Toán</a>
+                                        </div>
                                     </div>
-                                    <div class="col-sm-3">
-                                        <input type="submit" value="Apply Coupon" class="btn btn-primary">
+                                {{-- </form> --}}
+                            </div>
+                            <div class="col-sm-4 text-center">
+                                <div class="total">
+                                    <div class="sub">
+                                        <p><span>Tổng:</span> <span class="total-price">{{Cart::total()}} VNĐ</span></p>
+                                        {{-- <p><span>Delivery:</span> <span>$0.00</span></p> --}}
+                                        <p><span>Ship:</span> <span>30.000 VNĐ</span></p>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-sm-4 text-center">
-                            <div class="total">
-                                <div class="sub">
-                                    <p><span>Tổng:</span> <span class="total-price">{{Cart::total()}} VNĐ</span></p>
-                                    {{-- <p><span>Delivery:</span> <span>$0.00</span></p> --}}
-                                    <p><span>Ship:</span> <span>30.000 VNĐ</span></p>
-                                </div>
-                                <div class="grand-total">
-                                    <p><span><strong>Tổng:</strong></span> <span class="total-price">{{Cart::total()}} VNĐ</span></p>
+                                    <div class="grand-total">
+                                        <p><span><strong>Tổng:</strong></span> <span class="total-price">{{Cart::total()}} VNĐ</span></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        @endif
         <div class="row">
             <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
                 <h2>Related Products</h2>

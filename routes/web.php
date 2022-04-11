@@ -32,6 +32,7 @@ Route::get('san-pham/chi-tiet/{id}', 'WebController@showDetail')->name('web.deta
 
 Route::post('cart/add/{id}','CartController@addCart')->name('cart.add');
 Route::post('cart/update','CartController@updateCart')->name('cart.update');
+Route::post('cart/addCustomer','CartController@addCustomer')->name('cart.addCustomer');
 
 //Admin
 Route::group(['middleware' => 'auth'], function () {

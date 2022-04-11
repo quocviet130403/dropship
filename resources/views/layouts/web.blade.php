@@ -97,15 +97,19 @@
             </div>
         </nav>
 		@section('breadcrumb')
-			<div class="breadcrumbs">
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<p class="bread"><span><a href="index.html">Home</a></span> / <span>Women</span></p>
+			@if(isset($breacrumb) && $breacrumb != 'TRANG CHU')
+				<div class="breadcrumbs">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<p class="bread"><span><a href="{{asset('/trang-chu')}}">TRANG CHU</a>
+									</span> / <span>{{$breacrumb}}</span>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			@endif
 		@show
 		@yield('content')
 
@@ -188,12 +192,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
-	</div>
-	
-	<!-- jQuery -->
+		</div>
+		
+		<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 	<script src="{{asset('public/web/js/jquery.min.js')}}"></script>
-   <!-- popper -->
-   <script src="{{asset('public/web/js/popper.min.js')}}"></script>
+	
+	<script src="https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js"></script>
+	<!-- popper -->
+	<script src="{{asset('public/web/js/popper.min.js')}}"></script>
    <!-- bootstrap 4.1 -->
    <script src="{{asset('public/web/js/bootstrap.min.js')}}"></script>
    <!-- jQuery easing -->
@@ -213,7 +221,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{asset('public/web/js/jquery.stellar.min.js')}}"></script>
 	<!-- Main -->
 	<script src="{{asset('public/web/js/main.js')}}"></script>
+	
 	<script src="{{asset('public/js/main.js')}}"></script>
+
+	<script src="{{asset('public/js/district.js')}}"></script>
+
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	@if(Session::get('success'))
 	<script>
