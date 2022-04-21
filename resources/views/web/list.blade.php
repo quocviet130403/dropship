@@ -11,10 +11,10 @@
         <div class="row">
             <div class="col">
                 <div class="breadcrumbs-img" style="background-image: url(../../public/web/images/cover-img-1.jpg);">
-                    <h2>Women's</h2>
+                    <h2>Tất cả</h2>
                 </div>
                 <div class="menu text-center">
-                    <p><a href="#">New Arrivals</a> <a href="#">Best Sellers</a> <a href="#">Extended Widths</a> <a href="#">Sale</a></p>
+                    <p><a href="#">Mới nhất</a> <a href="#">Bán Chạy</a> <a href="#">Khuyến Mãi</a> <a href="#">Giảm Giá</a></p>
                 </div>
             </div>
         </div>
@@ -24,27 +24,19 @@
 <div class="colorlib-featured">
     <div class="container">
         <div class="row">
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-6 text-center">
                 <div class="featured">
                     <div class="featured-img featured-img-2" style="background-image: url(../../public/web/images/img_bg_2.jpg);">
-                        <h2>Casuals</h2>
-                        <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+                        <h2>Nam</h2>
+                        <p><a href="#" class="btn btn-primary btn-lg">Mua ngay</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4 text-center">
+            <div class="col-sm-6 text-center">
                 <div class="featured">
                     <div class="featured-img featured-img-2" style="background-image: url(../../public/web/images/women.jpg);">
-                        <h2>Dress</h2>
-                        <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 text-center">
-                <div class="featured">
-                    <div class="featured-img featured-img-2" style="background-image: url(../../public/web/images/item-11.jpg);">
-                        <h2>Sports</h2>
-                        <p><a href="#" class="btn btn-primary btn-lg">Shop now</a></p>
+                        <h2>Nữ</h2>
+                        <p><a href="#" class="btn btn-primary btn-lg">Mua ngay</a></p>
                     </div>
                 </div>
             </div>
@@ -134,11 +126,8 @@
                     </div> --}}
                     <div class="col-sm-12">
                         <div class="side border mb-1">
-                            <h3>Kiểu áo</h3>
-                            <ul>
-                                <li><a href="#">Áo Thun</a></li>
-                                <li><a href="#">Áo Sơ Mi</a></li>
-                            </ul>
+                            <h3>loại</h3>
+                            {!!show_categories_web($dataPage['categories'])!!}
                         </div>
                     </div>
                     {{-- <div class="col-sm-12">
@@ -155,7 +144,7 @@
             </div>
             <div class="col-lg-9 col-xl-9">
                 <div class="row row-pb-md">
-                    @forelse ($dataPage as $product)
+                    @forelse ($dataPage['products'] as $product)
                         
                     <div class="col-lg-4 mb-4 text-center">
                         <div class="product-entry border">
@@ -164,29 +153,17 @@
                             </a>
                             <div class="desc">
                                 <h2><a href="{{route('web.detail',$product->id)}}">{{$product->product}}</a></h2>
-                                <span class="price">{{number_format($product->price)}}</span>
+                                <span class="price">{{number_format($product->price)}} VNĐ</span>
                             </div>
                         </div>
                     </div>
                     @empty
                         
                     @endforelse
+
+
                 </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <div class="block-27">
-                       <ul>
-                           <li><a href="#"><i class="ion-ios-arrow-back"></i></a></li>
-                          <li class="active"><span>1</span></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#"><i class="ion-ios-arrow-forward"></i></a></li>
-                       </ul>
-                    </div>
-                    </div>
-                </div>
+                {{$dataPage['products']->links('web.component.paginate')}}
             </div>
         </div>
     </div>

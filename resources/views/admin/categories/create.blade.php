@@ -32,6 +32,29 @@
                                         <option value="1" {{(isset($category) && $category->status == 1) ? "selected" : ""}}>Completed</option>
                                     </select>
                                 </div>
+                                {{-- <div class="col-md-12 mb-3">
+                                    <select name="status" class="form-control" id="status" required>
+                                        <option value="0" {{(isset($category) && $category->status == 0) ? "selected" : ""}}>Pedding</option>
+                                        <option value="1" {{(isset($category) && $category->status == 1) ? "selected" : ""}}>Completed</option>
+                                    </select>
+                                </div> --}}
+                                <div class="col-md-12 mb-3">
+                                    @php
+                                        $gender = explode(',',$category->gender);
+                                        $checkMale = in_array('male',$gender) ? 'checked' : '';
+                                        $checkFemale = in_array('female',$gender) ? 'checked' : '';
+
+                                    @endphp
+                                    <label for="">Gender</label>
+                                    <label class="control control-checkbox">Male
+                                        <input type="checkbox" name="gender[]" value="male" {{$checkMale}} />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                    <label class="control control-checkbox">Female
+                                        <input type="checkbox" name="gender[]" value="female" {{$checkFemale}}/>
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer02">Parent Category</label>
                                     <select name="parent_id" class="form-control" required>

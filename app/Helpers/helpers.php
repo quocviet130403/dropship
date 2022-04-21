@@ -23,6 +23,26 @@ if (!function_exists('show_categories')) {
     }
 }
 
+
+if (!function_exists('show_categories_web')) {
+    function show_categories_web($categories,$active=null,$parent_id=0,$level=0)
+    {
+        $result = "<ul>";
+        foreach($categories as $category){
+            if($category->parent_id == $parent_id){
+                $category_level = str_repeat('-',$level) .' '. $category->category;
+                // $selected = $active == $category->id ? 'selected' : '';
+                $result .= "<li><a href=''>$category_level</a>";
+                $child = show_categories_web($categories,$active=$active,$category->id,$level+1);
+                $child .= "</li>";
+                $result = $result . $child;
+            }
+        }
+        $result .= "</ul>";
+        return $result;
+    }
+}
+
 if (!function_exists('get_categories')) {
     function get_categories()
     {

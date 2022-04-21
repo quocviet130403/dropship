@@ -10,7 +10,7 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'category','status','parent_id'
+        'category','status','parent_id','gender'
     ];
 
     public function products(){

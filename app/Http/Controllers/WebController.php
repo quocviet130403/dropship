@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Repository\Categories\CategoryRepositoryInterface;
 use App\Repository\Products\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
     //
-    public function show($page, ProductRepositoryInterface $productRepositoryInterface){
+    public function show($page, ProductRepositoryInterface $productRepositoryInterface, CategoryRepositoryInterface $categoryRepositoryInterface){
         $breacrumb = strtoupper(str_replace('-', ' ', $page));
         $listPage = [
             'san-pham' => 'list',
@@ -23,7 +24,12 @@ class WebController extends Controller
             $pathView = "web.".$listPage[$page];
             switch($listPage[$page]){
                 case 'list':
-                    $dataPage = $productRepositoryInterface->getPaginate(40);
+                    $products = $productRepositoryInterface->getPaginate(40);
+                    $categories = $categoryRepositoryInterface->getAll();
+                    $dataPage = [
+                        'products' => $products,
+                        'categories' => $categories
+                    ];
                     break;
                 default : $dataPage = '';
             }
@@ -44,4 +50,5 @@ class WebController extends Controller
         ];
         return view('web.detail',$data);
     }
+
 }

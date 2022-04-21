@@ -49,6 +49,7 @@ class CategoryController extends Controller
         //
         $data = $request->input();
         $data = Arr::except($data, ['_token']);
+        $data['gender'] = implode(',',$data['gender']);
         $categoryRepositoryInterface->addOrUpdate($data);
         return back()->with('status',true);
     }
@@ -94,6 +95,7 @@ class CategoryController extends Controller
         //
         $data = $request->input();
         $data = Arr::except($data, ['_token','_method']);
+        $data['gender'] = implode(',',$data['gender']);
         $categoryRepositoryInterface->updateById($id,$data);
         return back()->with('update',true);
         
