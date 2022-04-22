@@ -40,7 +40,7 @@
                                 </div> --}}
                                 <div class="col-md-12 mb-3">
                                     @php
-                                        $gender = explode(',',$category->gender);
+                                        $gender = isset($category) ? explode(',',$category->gender) : [];
                                         $checkMale = in_array('male',$gender) ? 'checked' : '';
                                         $checkFemale = in_array('female',$gender) ? 'checked' : '';
 

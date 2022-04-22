@@ -13,6 +13,8 @@ class WebController extends Controller
         $breacrumb = strtoupper(str_replace('-', ' ', $page));
         $listPage = [
             'san-pham' => 'list',
+            'nam' => 'list',
+            'nu' => 'list',
             'gioi-thieu' => 'about',
             'lien-he' => 'contact',
             'trang-chu' => 'index',
@@ -20,12 +22,28 @@ class WebController extends Controller
             'thanh-toan' => 'cart.checkout',
             'thanh-cong' => 'cart.complete'
         ];
+        $listCategory = [
+            'nam' => 'male',
+            'nu' => 'female'
+        ];
         if(array_key_exists($page,$listPage)){
             $pathView = "web.".$listPage[$page];
-            switch($listPage[$page]){
-                case 'list':
+            switch($page){
+                case 'san-pham':
                     $products = $productRepositoryInterface->getPaginate(40);
                     $categories = $categoryRepositoryInterface->getAll();
+                    $dataPage = [
+                        'products' => $products,
+                        'categories' => $categories
+                    ];
+                    break;
+                case 'nu' || 'nam':
+                    if(!array_key_exists($page,$listCategory)){
+                        return "page 404";
+                    }
+                    $products = $productRepositoryInterface->getGenderProducts($listCategory[$page],40);
+                    $categories = $categoryRepositoryInterface->getGenderCategories($listCategory[$page]);
+                    dd($categories);
                     $dataPage = [
                         'products' => $products,
                         'categories' => $categories

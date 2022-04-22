@@ -10,7 +10,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'code','product','price','old_price','status','sale','category_id','desc'
+        'code','product','price','old_price','status','sale','category_id','desc','gender'
     ];
 
     public function categories(){

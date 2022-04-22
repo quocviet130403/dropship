@@ -26,6 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/{pages}','WebController@show')->name('web.show');
+Route::get('san-pham/{category}','WebController@show')->name('web.category');
 Route::get('san-pham/chi-tiet/{id}', 'WebController@showDetail')->name('web.detail');
 //Cart
 

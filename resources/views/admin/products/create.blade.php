@@ -27,11 +27,11 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Price</label>
-                                    <input type="number" class="form-control" id="validationServer01" name="price" value="{{isset($product) ? $product->price : ''}}" required>
+                                    <input type="number" class="form-control" id="validationServer01" max="10000000" min="1" name="price" value="{{isset($product) ? $product->price : ''}}" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Price Old</label>
-                                    <input type="number" class="form-control" id="validationServer01" name="old_price" value="{{isset($product) ? $product->old_price : ''}}" required>
+                                    <input type="number" class="form-control" id="validationServer01"  max="10000000" min="1" name="old_price" value="{{isset($product) ? $product->old_price : ''}}" required>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationServer01">Desc</label>
@@ -61,6 +61,23 @@
                                             echo show_categories($categories,$parent_id);
                                         @endphp
                                     </select>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    @php
+                                        $gender = isset($product) ? explode(',',$product->gender) : [];
+                                        $checkMale = in_array('male',$gender) ? 'checked' : '';
+                                        $checkFemale = in_array('female',$gender) ? 'checked' : '';
+
+                                    @endphp
+                                    <label for="">Gender</label>
+                                    <label class="control control-checkbox">Male
+                                        <input type="checkbox" name="gender[]" value="male" {{$checkMale}} />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                    <label class="control control-checkbox">Female
+                                        <input type="checkbox" name="gender[]" value="female" {{$checkFemale}}/>
+                                        <div class="control-indicator"></div>
+                                    </label>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="image">Hình ảnh</label>

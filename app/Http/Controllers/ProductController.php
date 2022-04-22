@@ -55,6 +55,7 @@ class ProductController extends Controller
         $data = Arr::except($data, ['_token','filepath']);
         $listProducts = $productRepositoryInterface->getAllName();
         $data['code'] = Str::random(8);
+        $data['gender'] = implode(',',$data['gender']);
         if(!blank($listProducts)){
             foreach($listProducts as $item){
                 if($item->product == $data['product']){
@@ -125,6 +126,7 @@ class ProductController extends Controller
         //
         $data = $request->input();
         $data = Arr::except($data, ['_token','filepath']);
+        $data['gender'] = implode(',',$data['gender']);
         $product = $productRepositoryInterface->getById($id);
         $product->update($data);
         $urlImage = convert_image($request->input('filepath'));

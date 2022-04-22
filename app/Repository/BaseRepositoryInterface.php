@@ -10,4 +10,6 @@ interface BaseRepositoryInterface{
     public function deleteById($id);
     public function getAllName();
     public function getPaginate($limit);
+    public function getGenderProducts($gender,$limit);
+    public function getGenderCategories($gender);
 }
