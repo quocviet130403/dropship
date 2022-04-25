@@ -28,7 +28,7 @@
                 <div class="featured">
                     <div class="featured-img featured-img-2" style="background-image: url(../../public/web/images/img_bg_2.jpg);">
                         <h2>Nam</h2>
-                        <p><a href="#" class="btn btn-primary btn-lg">Mua ngay</a></p>
+                        <p><a href="{{asset('/san-pham/nam')}}" class="btn btn-primary btn-lg">Mua ngay</a></p>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="featured">
                     <div class="featured-img featured-img-2" style="background-image: url(../../public/web/images/women.jpg);">
                         <h2>Nữ</h2>
-                        <p><a href="#" class="btn btn-primary btn-lg">Mua ngay</a></p>
+                        <p><a href="{{asset('/san-pham/nu')}}" class="btn btn-primary btn-lg">Mua ngay</a></p>
                     </div>
                 </div>
             </div>
@@ -45,24 +45,38 @@
 </div>
 
 <div class="colorlib-product">
-    <div class="container">
+    <div class="container" id="filter" data-url="{{route('products.filter')}}">
         <div class="row">
             <div class="col-lg-3 col-xl-3">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="side border mb-1">
-                            <h3>Thương hiệu</h3>
-                            <ul>
-                                <li><a href="#">Nike</a></li>
-                                <li><a href="#">Adidas</a></li>
-                                <li><a href="#">Merrel</a></li>
-                                <li><a href="#">Gucci</a></li>
-                                <li><a href="#">Skechers</a></li>
-                            </ul>
+                            <h3>Sắp xếp</h3>
+                            <div class="form-group">
+                                <select name="filter-orderby" id="filter-orderby" class="form-control">
+                                    <option value="0">Giá thấp đến cao</option>
+                                    <option value="1">Giá cao đến thấp</option>
+                                    <option value="2">Mới đến cũ</option>
+                                    <option value="3">Cũ đến mới</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="side border mb-1">
+                            <h3>Giá tiền</h3>
+                            <div class="item d-flex justify-content-between">
+                                <label for="from_price">Từ :</label>
+                                 <input style="margin-bottom:10px" type="number" min="1" name="from_price">
+                            </div>
+                            <div class="item d-flex justify-content-between">
+                                <label for="to_price">Đến :</label>
+                                <input type="number" min="1" name="to_price">
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div class="col-sm-12"> --}}
+                        {{-- <div class="side border mb-1"> --}}
                             {{-- <h3>Size/Width</h3> --}}
                             {{-- <div class="block-26 mb-2"> --}}
                                 {{-- <h4>Size</h4>
@@ -84,7 +98,7 @@
                               <li><a href="#">14</a></li>
                            </ul> --}}
                         {{-- </div> --}}
-                        <div class="block-26">
+                        {{-- <div class="block-26">
                                 <h4>Size</h4>
                            <ul>
                               <li><a href="#">S</a></li>
@@ -94,8 +108,8 @@
                               <li><a href="#">XL</a></li>
                            </ul>
                         </div>
-                        </div>
-                    </div>
+                        </div> --}}
+                    {{-- </div> --}}
                     {{-- <div class="col-sm-12">
                         <div class="side border mb-1">
                             <h3>Style</h3>

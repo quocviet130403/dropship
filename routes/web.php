@@ -26,13 +26,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/{pages}','WebController@show')->name('web.show');
-Route::get('san-pham/{category}','WebController@show')->name('web.category');
+Route::get('san-pham/{category}','WebController@show');
 Route::get('san-pham/chi-tiet/{id}', 'WebController@showDetail')->name('web.detail');
 //Cart
 
 Route::post('cart/add/{id}','CartController@addCart')->name('cart.add');
 Route::post('cart/update','CartController@updateCart')->name('cart.update');
 Route::post('cart/addCustomer','CartController@addCustomer')->name('cart.addCustomer');
+
+// Ajax
+Route::post('products/filter','AjaxController@filterProduct')->name('products.filter');
 
 //Admin
 Route::group(['middleware' => 'auth'], function () {

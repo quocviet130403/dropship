@@ -12,24 +12,35 @@
         <div class="row row-pb-lg product-detail-wrap">
             <div class="col-sm-8">
                 {{-- <img src="{{asset($product->images[0]->image)}}" class="img-fluid" alt="Free html5 bootstrap 4 template"> --}}
+                @if($product->images->count() > 1)
                 <div class="owl-carousel">
-                    @forelse($product->images as $image)
-                    <div class="item">
-                        <div class="product-entry border">
-                            <a href="javascript:;" class="prod-img">
-                                <img src="{{asset($image->image)}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
-                            </a>
+                        @forelse($product->images as $image)
+                        <div class="item">
+                            <div class="product-entry border">
+                                <a href="javascript:;" class="prod-img" style="width: 100%;height: auto;max-height:780px;overflow:hidden">
+                                    <img src="{{asset($image->image)}}" style="width:100%;height:100%; object-fit:contain" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    @empty
-                    @endforelse
+                        @empty
+                        @endforelse
                 </div>
+                @else 
+                <div class="item" >
+                    <div class="product-entry border">
+                        <a href="javascript:;" class="prod-img" style="width: 100%;height: auto;max-height:780px;overflow:hidden">
+                            <img src="{{asset($product->images[0]->image)}}" class="img-fluid" style="width:100%;height:100%; object-fit:contain" alt="Free html5 bootstrap 4 template">
+                        </a>
+                    </div>
+                </div>
+                @endif
             </div>
             <div class="col-sm-4">
                 <div class="product-desc">
                     <h3>{{$product->product}}</h3>
                     <p class="price">
-                        <span>{{number_format($product->price)}} VNĐ</span> 
+                        <span style="color:red">{{number_format($product->price)}} VNĐ</span> 
+                        <span style="text-decoration:line-through">{{number_format($product->old_price)}} VNĐ</span> 
                         <span class="rate">
                             <i class="icon-star-full"></i>
                             <i class="icon-star-full"></i>
@@ -39,7 +50,7 @@
                             (74 Rating)
                         </span>
                     </p>
-                    <p>{!! $product->desc !!}</p>
+                    {{-- <p>{!! $product->desc !!}</p> --}}
                     {{-- <div class="size-wrap">
                         <div class="block-26 mb-2">
                             <h4>Size</h4>

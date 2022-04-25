@@ -222,11 +222,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Main -->
 	<script src="{{asset('public/web/js/main.js')}}"></script>
 	
-	<script src="{{asset('public/js/main.js')}}"></script>
-
-	<script src="{{asset('public/js/district.js')}}"></script>
-
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+	<script src="{{asset('public/js/district.js')}}"></script>
+	
+	<script src="{{asset('public/js/main.js')}}"></script>
 	@if(Session::get('success'))
 	<script>
 		$(window).on('load',function(){
@@ -283,7 +283,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	  })
 	</script>
 	@endif
-
 	</body>
 </html>
 

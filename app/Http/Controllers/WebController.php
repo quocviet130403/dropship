@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repository\Categories\CategoryRepositoryInterface;
 use App\Repository\Products\ProductRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class WebController extends Controller
 {
@@ -37,13 +38,12 @@ class WebController extends Controller
                         'categories' => $categories
                     ];
                     break;
-                case 'nu' || 'nam':
+                case ($page == 'nu' || $page == 'nam'):
                     if(!array_key_exists($page,$listCategory)){
-                        return "page 404";
+                        return abort(404);
                     }
                     $products = $productRepositoryInterface->getGenderProducts($listCategory[$page],40);
                     $categories = $categoryRepositoryInterface->getGenderCategories($listCategory[$page]);
-                    dd($categories);
                     $dataPage = [
                         'products' => $products,
                         'categories' => $categories
@@ -63,8 +63,10 @@ class WebController extends Controller
 
     public function showDetail($id, ProductRepositoryInterface $productRepositoryInterface){
         $product = $productRepositoryInterface->getById($id);
+        $breacrumb = strtoupper(str_replace('-', ' ', Str::slug($product->product)));
         $data = [
-            'product' => $product
+            'product' => $product,
+            'breacrumb' => $breacrumb,
         ];
         return view('web.detail',$data);
     }

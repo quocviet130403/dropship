@@ -444,13 +444,24 @@ NProgress.start();
                         <li >
                           <a href="{{route('page.index')}}">Pages</a>
                         </li>
-                        
-                        <li >
-                          <a href="{{route('category.index')}}">Category</a>
-                        </li>
-
-                        <li >
-                          <a href="{{route('product.index')}}">Products</a>
+                        <li  class="has-sub" >
+                          <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapseSub" data-target="#otherss"
+                            aria-expanded="false" aria-controls="otherss">
+                            <span class="nav-text">Product</span>
+                          </a>
+                          <ul  class="collapseSub"  id="otherss">
+                            <div class="sub-menu">
+                              <li >
+                                <a href="{{route('category.index')}}">Category</a>
+                              </li>
+                              <li >
+                                <a href="{{route('product.index')}}">Products</a>
+                              </li>
+                              <li >
+                                <a href="{{route('product.index')}}">Sizes</a>
+                              </li>
+                            </div>
+                          </ul>
                         </li>
                       
                         <li >

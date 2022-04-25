@@ -75,17 +75,17 @@
         <div class="row">
             <div class="col-sm-6 text-center">
                 <div class="featured">
-                    <a href="#" class="featured-img" style="background-image: url(../../public/web/images/men.jpg);"></a>
+                    <a href="{{asset('san-pham/nam')}}" class="featured-img" style="background-image: url(../../public/web/images/men.jpg);"></a>
                     <div class="desc">
-                        <h2><a href="#">Shop Men's Collection</a></h2>
+                        <h2><a href="{{asset('san-pham/nam')}}">Shop Men's Collection</a></h2>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 text-center">
                 <div class="featured">
-                    <a href="#" class="featured-img" style="background-image: url(../../public/web/images/women.jpg);"></a>
+                    <a href="{{asset('san-pham/nu')}}" class="featured-img" style="background-image: url(../../public/web/images/women.jpg);"></a>
                     <div class="desc">
-                        <h2><a href="#">Shop Women's Collection</a></h2>
+                        <h2><a href="{{asset('san-pham/nu')}}">Shop Women's Collection</a></h2>
                     </div>
                 </div>
             </div>
@@ -101,20 +101,6 @@
             </div>
         </div>
         <div class="row row-pb-md">
-           @forelse(getProducts() as $product)
-            <div class="col-lg-3 mb-4 text-center">
-                <div class="product-entry border">
-                    <a href="{{route('web.detail',$product->id)}}" class="prod-img">
-                        <img src="{{asset($product->images[0]->image)}}" class="img-fluid" alt="Free html5 bootstrap 4 template">
-                    </a>
-                    <div class="desc">
-                        <h2><a href="#">{{$product->product}}</a></h2>
-                        <span class="price">{{number_format($product->price)}} VNĐ</span>
-                    </div>
-                </div>
-            </div>
-           @empty
-           @endforelse
            @forelse(getProducts() as $product)
             <div class="col-lg-3 mb-4 text-center">
                 <div class="product-entry border">

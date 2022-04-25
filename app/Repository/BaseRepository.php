@@ -47,13 +47,13 @@ class BaseRepository implements BaseRepositoryInterface{
     {
         return $this->model
         ->select('*')
-        ->where('gender',$gender)
+        ->whereRaw('FIND_IN_SET(?, gender)', [$gender])
         ->paginate($limit);
     }
     public function getGenderCategories($gender){
         return $this->model
         ->select('*')
-        ->where('gender',$gender)
+        ->whereRaw('FIND_IN_SET(?, gender)', [$gender])
         ->get();
     }
 }
